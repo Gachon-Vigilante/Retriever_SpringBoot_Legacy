@@ -2,11 +2,11 @@ package com.team7.retriever;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.neo4j.core.mapping.Neo4jMappingContext;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling // Scheduler 활성화
+@EnableMongoAuditing
 @SpringBootApplication
 public class RetrieverApplication {
 

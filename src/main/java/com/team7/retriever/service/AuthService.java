@@ -180,21 +180,31 @@ public class AuthService {
 	}
 
 	private String grantRole(String id, String employeeId, Role role) {
-		User user = userRepository.findByEmployeeId(employeeId)
+		User targetUser = userRepository.findByEmployeeId(employeeId)
 			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
 
-		if (user.getId().equals(id)) {
+		if (targetUser.getId().equals(id)) {
 			throw new BadRequestException(UserErrorCode.CAN_NOT_CHANGE_MY_ROLE);
 		}
 
-		if (user.getRole() == role) {
+		if (targetUser.getRole() == role) {
 			throw new BadRequestException(UserErrorCode.ALREADY_GRANTED_ROLE);
 		}
 
-		user.grantRole(role);
-		userRepository.save(user);
+		User user = userRepository.findById(id)
+			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
+
+		if (user.getRole() != Role.ROOT
+			&& (targetUser.getRole() == Role.ADMIN || targetUser.getRole() == Role.ROOT)
+			&& role == Role.USER) {
+			throw new BadRequestException(UserErrorCode.CAN_NOY_CHANGE_ADMIN_ROLE);
+		}
+
+		targetUser.grantRole(role);
+		userRepository.save(targetUser);
 		log.info("employeeId: {} 에게 {} 역할을 부여했습니다.", employeeId, role);
-		return user.getName() + "님에게 " + role.getRoleName() + " 권한이 부여됐습니다. 변경된 권한을 설정하기 위해서는 로그아웃 후 다시 로그인해 주세요.";
+		return targetUser.getName() + "님에게 " + role.getRoleName()
+			+ " 권한을 부여했습니다. 변경된 권한을 얻기 위해서는 로그아웃 후 다시 로그인해야 합니다.";
 	}
 }
 

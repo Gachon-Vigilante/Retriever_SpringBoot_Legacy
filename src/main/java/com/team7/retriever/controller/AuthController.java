@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team7.retriever.auth.cookie.CookieProvider;
+import com.team7.retriever.dto.request.GrantRequest;
 import com.team7.retriever.dto.request.LoginRequest;
 import com.team7.retriever.dto.request.SignUpRequest;
 import com.team7.retriever.dto.response.LoginResponse;
@@ -65,17 +66,17 @@ public class AuthController {
 	}
 
 	@PatchMapping("/grant-user")
-	public String grantUserRole(@AuthenticationPrincipal String id, @RequestBody String employeeId) {
-		return authService.grantUserRole(id, employeeId);
+	public String grantUserRole(@AuthenticationPrincipal String id, @RequestBody GrantRequest grantRequest) {
+		return authService.grantUserRole(id, grantRequest.employeeId());
 	}
 
 	@PatchMapping("/grant-admin")
-	public String grantAdminRole(@AuthenticationPrincipal String id, @RequestBody String employeeId) {
-		return authService.grantAdminRole(id, employeeId);
+	public String grantAdminRole(@AuthenticationPrincipal String id, @RequestBody GrantRequest grantRequest) {
+		return authService.grantAdminRole(id, grantRequest.employeeId());
 	}
 
 	@PatchMapping("/grant-guest")
-	public String grantGuestRole(@AuthenticationPrincipal String id, @RequestBody String employeeId) {
-		return authService.grantGuestRole(id, employeeId);
+	public String grantGuestRole(@AuthenticationPrincipal String id, @RequestBody GrantRequest grantRequest) {
+		return authService.grantGuestRole(id, grantRequest.employeeId());
 	}
 }

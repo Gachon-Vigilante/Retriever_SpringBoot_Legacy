@@ -12,20 +12,19 @@ import lombok.RequiredArgsConstructor;
 public class CookieProvider {
 
 	@Value("${jwt.access-token-expire-time}")
-	private static Long accessTokenExpireTime;
+	private Long accessTokenExpireTime;
 
 	@Value("${jwt.refresh-token-expire-time}")
-	private static Long refreshTokenExpireTime;
+	private Long refreshTokenExpireTime;
 
 	private static final String ACCESS_TOKEN = "accessToken";
 	private static final String REFRESH_TOKEN = "refreshToken";
 
-	private static final int ACCESS_TOKEN_MAX_AGE = (int)(accessTokenExpireTime / 1000);
-	private static final int REFRESH_TOKEN_MAX_AGE = (int)(refreshTokenExpireTime / 1000);
-
 	public void setTokenCookies(HttpServletResponse response, String accessToken, String refreshToken) {
-		ResponseCookie accessTokenCookie = createTokenCookie(ACCESS_TOKEN, accessToken, ACCESS_TOKEN_MAX_AGE);
-		ResponseCookie refreshTokenCookie = createTokenCookie(REFRESH_TOKEN, refreshToken, REFRESH_TOKEN_MAX_AGE);
+		ResponseCookie accessTokenCookie = createTokenCookie(ACCESS_TOKEN, accessToken,
+			(int)(accessTokenExpireTime / 1000));
+		ResponseCookie refreshTokenCookie = createTokenCookie(REFRESH_TOKEN, refreshToken,
+			(int)(refreshTokenExpireTime / 1000));
 
 		response.addHeader("Set-Cookie", accessTokenCookie.toString());
 		response.addHeader("Set-Cookie", refreshTokenCookie.toString());

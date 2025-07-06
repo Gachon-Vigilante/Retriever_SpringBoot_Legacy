@@ -27,6 +27,8 @@ public class User {
 
 	private String password;
 
+	private String name;
+
 	private Role role;
 
 	private boolean active;
@@ -37,12 +39,17 @@ public class User {
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
 
-	public static User create(String employeeId, String password, Role role) {
+	public static User create(String employeeId, String password, String name, Role role) {
 		return User.builder()
-				.employeeId(employeeId)
-				.password(password)
-				.role(role)
-				.active(false)
-				.build();
+			.employeeId(employeeId)
+			.password(password)
+			.name(name)
+			.role(role)
+			.active(false)
+			.build();
+	}
+
+	public void grantRole(Role role) {
+		this.role = role;
 	}
 }

@@ -17,3 +17,13 @@ spring.data.mongodb.password=<your-password>
 spring.neo4j.uri=bolt://<your-neo4j-host>:<your-neo4j-port>
 spring.neo4j.authentication.username=<your-username>
 spring.neo4j.authentication.password=<your-password>
+
+# redis - local
+spring.data.redis.host=<your-redis-host>
+spring.data.redis.port=<your-redis-port>
+spring.data.redis.password=<your-redis-password>
+
+# jwt - local
+jwt.secret=<your-jwt-secret>
+jwt.access-token-expire-time=<access-token-expire-time-in-milliseconds>
+jwt.refresh-token-expire-time=<refresh-token-expire-time-in-milliseconds>

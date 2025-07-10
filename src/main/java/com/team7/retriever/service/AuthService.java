@@ -1,5 +1,6 @@
 package com.team7.retriever.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -50,7 +51,7 @@ public class AuthService {
 		}
 
 		User user = User.create(employeeId, passwordEncoder.encode(signUpRequest.password()),
-			signUpRequest.name(), Role.GUEST);
+			signUpRequest.name(), Role.USER);
 
 		userRepository.save(user);
 
@@ -81,7 +82,9 @@ public class AuthService {
 	}
 
 	@Transactional
-	public ReissueResponse reissueToken(final String refreshToken) {
+	public ReissueResponse reissueToken(HttpServletRequest httpServletRequest) {
+		String refreshToken = tokenService.getRefreshToken(httpServletRequest);
+
 		validateRefreshToken(refreshToken);
 
 		String userId = jwtTokenProvider.getUserIdFromJwt(refreshToken);
@@ -100,25 +103,22 @@ public class AuthService {
 	}
 
 	@Transactional
-	public String grantUserRole(String id, String employeeId) {
-		return grantRole(id, employeeId, Role.USER);
-	}
-
-	@Transactional
-	public String grantAdminRole(String id, String employeeId) {
-		return grantRole(id, employeeId, Role.ADMIN);
-	}
-
-	@Transactional
-	public String grantGuestRole(String id, String employeeId) {
-		return grantRole(id, employeeId, Role.GUEST);
-	}
-
-	@Transactional
 	public String logout(String userId) {
 		tokenService.deleteRefreshToken(userId);
 
 		return "로그아웃이 완료되었습니다.";
+	}
+
+	@Transactional
+	public String withdraw(String userId) {
+		User user = userRepository.findById(userId)
+			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
+
+		userRepository.delete(user);
+		tokenService.deleteRefreshToken(userId);
+
+		log.info("회원 탈퇴가 완료되었습니다. userId: {}", userId);
+		return "회원 탈퇴가 완료되었습니다.";
 	}
 
 	private User findUserWithAuthenticate(String employeeId, String password) {
@@ -127,12 +127,6 @@ public class AuthService {
 
 		if (!passwordEncoder.matches(password, user.getPassword())) {
 			throw new UnauthorizedException(UserErrorCode.PASSWORD_MISMATCH);
-		}
-
-		Role role = user.getRole();
-
-		if (role == Role.GUEST) {
-			throw new UnauthorizedException(UserErrorCode.UNAUTHORIZED);
 		}
 
 		return user;
@@ -177,34 +171,6 @@ public class AuthService {
 		if (!userId.equals(storedUserId)) {
 			throw new BadRequestException(TokenErrorCode.REFRESH_TOKEN_USER_ID_MISMATCH_ERROR);
 		}
-	}
-
-	private String grantRole(String id, String employeeId, Role role) {
-		User targetUser = userRepository.findByEmployeeId(employeeId)
-			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
-
-		if (targetUser.getId().equals(id)) {
-			throw new BadRequestException(UserErrorCode.CAN_NOT_CHANGE_MY_ROLE);
-		}
-
-		if (targetUser.getRole() == role) {
-			throw new BadRequestException(UserErrorCode.ALREADY_GRANTED_ROLE);
-		}
-
-		User user = userRepository.findById(id)
-			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
-
-		if (user.getRole() != Role.ROOT
-			&& (targetUser.getRole() == Role.ADMIN || targetUser.getRole() == Role.ROOT)
-			&& role == Role.USER) {
-			throw new BadRequestException(UserErrorCode.CAN_NOY_CHANGE_ADMIN_ROLE);
-		}
-
-		targetUser.grantRole(role);
-		userRepository.save(targetUser);
-		log.info("employeeId: {} 에게 {} 역할을 부여했습니다.", employeeId, role);
-		return targetUser.getName() + "님에게 " + role.getRoleName()
-			+ " 권한을 부여했습니다. 변경된 권한을 얻기 위해서는 로그아웃 후 다시 로그인해야 합니다.";
 	}
 }
 

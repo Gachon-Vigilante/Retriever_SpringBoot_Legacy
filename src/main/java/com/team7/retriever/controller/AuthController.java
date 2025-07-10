@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team7.retriever.auth.cookie.CookieProvider;
@@ -18,6 +19,7 @@ import com.team7.retriever.dto.response.LoginSuccessResponse;
 import com.team7.retriever.dto.response.ReissueResponse;
 import com.team7.retriever.service.AuthService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -47,15 +49,15 @@ public class AuthController {
 	}
 
 	@DeleteMapping("/logout")
-	public String logout(@CookieValue String refreshToken, HttpServletResponse httpServletResponse) {
+	public String logout(@AuthenticationPrincipal String userId, HttpServletResponse httpServletResponse) {
 		cookieProvider.deleteTokenCookies(httpServletResponse);
 
-		return authService.logout(refreshToken);
+		return authService.logout(userId);
 	}
 
 	@PostMapping("/reissue")
-	public String reissueToken(@CookieValue String refreshToken, HttpServletResponse httpServletResponse) {
-		ReissueResponse reissueResponse = authService.reissueToken(refreshToken);
+	public String reissueToken(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+		ReissueResponse reissueResponse = authService.reissueToken(httpServletRequest);
 
 		cookieProvider.setTokenCookies(httpServletResponse,
 			reissueResponse.accessToken(),
@@ -65,18 +67,8 @@ public class AuthController {
 		return "토큰을 재발급했습니다.";
 	}
 
-	@PatchMapping("/grant-user")
-	public String grantUserRole(@AuthenticationPrincipal String id, @RequestBody GrantRequest grantRequest) {
-		return authService.grantUserRole(id, grantRequest.employeeId());
-	}
-
-	@PatchMapping("/grant-admin")
-	public String grantAdminRole(@AuthenticationPrincipal String id, @RequestBody GrantRequest grantRequest) {
-		return authService.grantAdminRole(id, grantRequest.employeeId());
-	}
-
-	@PatchMapping("/grant-guest")
-	public String grantGuestRole(@AuthenticationPrincipal String id, @RequestBody GrantRequest grantRequest) {
-		return authService.grantGuestRole(id, grantRequest.employeeId());
+	@DeleteMapping("/withdraw}")
+	public String withdraw(@RequestParam String userId) {
+		return authService.withdraw(userId);
 	}
 }

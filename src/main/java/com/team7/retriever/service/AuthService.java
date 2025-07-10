@@ -110,14 +110,14 @@ public class AuthService {
 	}
 
 	@Transactional
-	public String withdraw(String userId) {
-		User user = userRepository.findById(userId)
+	public String withdraw(String employeeId) {
+		User user = userRepository.findByEmployeeId(employeeId)
 			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
 
 		userRepository.delete(user);
-		tokenService.deleteRefreshToken(userId);
+		tokenService.deleteRefreshToken(employeeId);
 
-		log.info("회원 탈퇴가 완료되었습니다. userId: {}", userId);
+		log.info("회원 탈퇴가 완료되었습니다. employeeId: {}", employeeId);
 		return "회원 탈퇴가 완료되었습니다.";
 	}
 

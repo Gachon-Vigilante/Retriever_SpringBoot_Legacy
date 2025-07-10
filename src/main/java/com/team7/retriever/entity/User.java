@@ -31,8 +31,6 @@ public class User {
 
 	private Role role;
 
-	private boolean active;
-
 	@CreatedDate
 	private LocalDateTime createdAt;
 
@@ -45,7 +43,6 @@ public class User {
 			.password(password)
 			.name(name)
 			.role(role)
-			.active(false)
 			.build();
 	}
 

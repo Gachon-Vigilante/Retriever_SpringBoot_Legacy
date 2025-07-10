@@ -57,4 +57,8 @@ public class TokenService {
 			.findFirst()
 			.orElseThrow(() -> new UnauthorizedException(TokenErrorCode.EMPTY_OR_INVALID_TOKEN));
 	}
+
+	public boolean existsByUserId(final String userId) {
+		return tokenRepository.existsById(userId);
+	}
 }

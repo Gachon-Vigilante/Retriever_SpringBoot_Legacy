@@ -114,8 +114,13 @@ public class AuthService {
 		User user = userRepository.findByEmployeeId(employeeId)
 			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
 
+		String userId = user.getId();
+
 		userRepository.delete(user);
-		tokenService.deleteRefreshToken(user.getId());
+
+		if (tokenService.existsByUserId(userId)) {
+			tokenService.deleteRefreshToken(user.getId());
+		}
 
 		log.info("회원 탈퇴가 완료되었습니다. employeeId: {}", employeeId);
 		return "회원 탈퇴가 완료되었습니다.";

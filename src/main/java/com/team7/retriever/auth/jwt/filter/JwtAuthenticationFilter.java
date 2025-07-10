@@ -101,9 +101,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		} else if (role == Role.USER) {
 			log.info("Creating MemberAuthentication for userId: {}", userId);
 			return new MemberAuthentication(userId, null, authorities);
-		} else if (role == Role.GUEST) {
-			log.info("Creating GuestAuthentication for userId: {}", userId);
-			throw new UnauthorizedException(UserErrorCode.UNAUTHORIZED);
 		}
 		log.error("알 수 없는 role 입니다: {}", role);
 		throw new IllegalArgumentException("알 수 없는 role 입니다: " + role);

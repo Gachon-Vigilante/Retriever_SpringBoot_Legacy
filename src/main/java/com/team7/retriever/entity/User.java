@@ -46,7 +46,7 @@ public class User {
 			.build();
 	}
 
-	public void grantRole(Role role) {
+	public void updateRole(Role role) {
 		this.role = role;
 	}
 }

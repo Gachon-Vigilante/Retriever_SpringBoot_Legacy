@@ -1,9 +1,7 @@
 package com.team7.retriever.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team7.retriever.auth.cookie.CookieProvider;
-import com.team7.retriever.dto.request.GrantRequest;
 import com.team7.retriever.dto.request.LoginRequest;
 import com.team7.retriever.dto.request.SignUpRequest;
 import com.team7.retriever.dto.response.LoginResponse;
@@ -67,7 +64,7 @@ public class AuthController {
 		return "토큰을 재발급했습니다.";
 	}
 
-	@DeleteMapping("/withdraw}")
+	@DeleteMapping("/withdraw")
 	public String withdraw(@RequestParam String userId) {
 		return authService.withdraw(userId);
 	}

@@ -28,7 +28,6 @@ public class SecurityConfig {
 	public String[] getAuthWhitelist() {
 		return new String[] {
 			"/error",
-			"/auth/signup",
 			"/auth/login",
 			"/auth/reissue",
 			"/swagger-ui/**",
@@ -37,12 +36,12 @@ public class SecurityConfig {
 	}
 
 	private static final String[] AUTH_ADMIN_ONLY = {
-		"/auth/grant-user",
-		"/auth/grant-guest"
+		"/auth/signup",
+		"/user"
 	};
 
 	private static final String[] AUTH_ROOT_ONLY = {
-		"/auth/grant-admin"
+		"/user/grant-role"
 	};
 
 	@Bean

@@ -12,8 +12,7 @@ public enum Role {
 
 	ROOT("ROLE_ROOT"),
 	ADMIN("ROLE_ADMIN"),
-	USER("ROLE_USER"),
-	GUEST("ROLE_GUEST");
+	USER("ROLE_USER");
 
 	private final String roleName;
 

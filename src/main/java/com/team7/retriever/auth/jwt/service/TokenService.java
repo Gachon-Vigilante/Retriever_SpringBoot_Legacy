@@ -1,12 +1,17 @@
 package com.team7.retriever.auth.jwt.service;
 
+import java.util.Arrays;
+
 import org.springframework.stereotype.Service;
 
 import com.team7.retriever.exception.NotFoundException;
 import com.team7.retriever.auth.jwt.exception.TokenErrorCode;
 import com.team7.retriever.auth.redis.Token;
 import com.team7.retriever.auth.jwt.repository.TokenRepository;
+import com.team7.retriever.exception.UnauthorizedException;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,5 +42,23 @@ public class TokenService {
 
 		tokenRepository.delete(token);
 		log.info("refresh token을 삭제했습니다: {}", token);
+	}
+
+	public String getRefreshToken(HttpServletRequest request) {
+		Cookie[] cookies = request.getCookies();
+
+		if (cookies == null) {
+			throw new UnauthorizedException(TokenErrorCode.EMPTY_OR_INVALID_TOKEN);
+		}
+
+		return Arrays.stream(cookies)
+			.filter(cookie -> "refreshToken".equals(cookie.getName()))
+			.map(Cookie::getValue)
+			.findFirst()
+			.orElseThrow(() -> new UnauthorizedException(TokenErrorCode.EMPTY_OR_INVALID_TOKEN));
+	}
+
+	public boolean existsByUserId(final String userId) {
+		return tokenRepository.existsById(userId);
 	}
 }

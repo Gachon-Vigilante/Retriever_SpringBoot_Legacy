@@ -1,6 +1,7 @@
 package com.team7.retriever.neo4j.entity;
 
 import lombok.Getter;
+
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.RelationshipProperties;
@@ -10,16 +11,26 @@ import org.springframework.data.neo4j.core.schema.TargetNode;
 @RelationshipProperties
 public class Promotes {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 
+	@TargetNode
+	private Channel channel;
+
+	public Promotes(Channel channel) {
+		this.channel = channel;
+	}
+
+    /*
     @TargetNode
     private Posts post;
 
     public Promotes(Posts post) {
         this.post = post;
     }
+
+     */
 
 }
 

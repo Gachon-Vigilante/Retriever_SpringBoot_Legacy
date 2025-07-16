@@ -4,9 +4,11 @@ import com.team7.retriever.neo4j.entity.Argot;
 
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface NeoArgotRepository extends Neo4jRepository<Argot, Long> {
 
 	@Query("""

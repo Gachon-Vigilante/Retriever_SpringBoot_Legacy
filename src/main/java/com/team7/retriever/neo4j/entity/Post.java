@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Node("Post")
-public class Posts {
+public class Post {
 
 	@Id
 	private String postId;
@@ -35,22 +35,7 @@ public class Posts {
 	private Set<Promotes> promotesChannels = new HashSet<>();
 
 	@Relationship(type = "SIMILAR", direction = Relationship.Direction.OUTGOING)
-	// @JsonIgnoreProperties("similarPosts") // 직렬화 X // (depth = 1)
 	@JsonIgnoreProperties({"promotesChannels", "similarPosts"})
-	private Set<Posts> similarPosts = new HashSet<>();
-
-	//    @Relationship(type = "SIMILAR", direction = Relationship.Direction.OUTGOING)
-	//    @JsonManagedReference
-	//    private Set<Posts> similarPosts = new HashSet<>();
-
-    /*
-    @Builder.Default
-    @Relationship(type = "PROMOTES", direction = Relationship.Direction.OUTGOING)
-    private Set<Promotes> promotesChannels = new HashSet<>();
-
-    @Relationship(type = "SIMILAR", direction = Relationship.Direction.OUTGOING)
-    private Set<Posts> similarPosts = new HashSet<>();
-
-     */
+	private Set<Post> similarPosts = new HashSet<>();
 
 }

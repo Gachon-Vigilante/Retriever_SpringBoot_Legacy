@@ -24,19 +24,4 @@ public class Drug {
 	private String englishName;
 	private String type;
 
-
-    /*
-    @Relationship(type = "REFERS_TO", direction = Relationship.Direction.INCOMING)
-    @JsonBackReference
-    private Set<Argot> referredByArgots = new HashSet<>();
-
-     */
-
-    /*
-    // @Relationship(type = "REFERS_TO", direction = Relationship.Direction.INCOMING)
-    @Relationship(type = "REFERS_TO", direction = Relationship.Direction.INCOMING)
-    @JsonBackReference
-    private Set<Argot> referredByArgots = new HashSet<>();
-
-     */
 }

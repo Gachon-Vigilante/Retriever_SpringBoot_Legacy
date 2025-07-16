@@ -22,5 +22,4 @@ public class DrugController {
 	public List<Drug> getAllDrugs() {
 		return drugService.getAllDrugs();
 	}
-
 }

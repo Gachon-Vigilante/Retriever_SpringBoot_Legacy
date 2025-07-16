@@ -3,8 +3,9 @@ package com.team7.retriever.neo4j.service;
 import com.team7.retriever.neo4j.repository.NeoChannelRepository;
 import com.team7.retriever.neo4j.repository.NeoPostsRepository;
 import com.team7.retriever.neo4j.entity.Channel;
-import com.team7.retriever.neo4j.entity.Posts;
 import com.team7.retriever.neo4j.entity.Promotes;
+import com.team7.retriever.neo4j.entity.Post;
+import com.team7.retriever.entity.Posts;
 import com.team7.retriever.service.PostsService;
 
 import jakarta.transaction.Transactional;
@@ -37,24 +38,26 @@ public class SavingPromotionService {
 				return neoChannelRepository.save(newChannel);
 			});
 
-		Optional<com.team7.retriever.entity.Posts> mongoPostOpt = postsService.getPostById(postId);
-		if (mongoPostOpt.isEmpty()) {
-			log.error("[Neo4j Service] MongoDB에서 해당 Post(" + postId + ")를 찾을 수 없습니다.");
-		}
-		com.team7.retriever.entity.Posts mongoPost = mongoPostOpt.get();
-
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
+		Optional<Posts> mongoPostOpt = postsService.getPostById(postId);
+		if (mongoPostOpt.isEmpty()) {
+			log.error("[Neo4j Service] MongoDB에서 해당 Post(" + postId + ")를 찾을 수 없습니다.");
+			return;
+		}
+
+		Posts mongoPost = mongoPostOpt.get();
+
 		// 포스트 노드 조회 or 생성
-		Posts post = neoPostsRepository.findByPostId(postId)
+		Post post = neoPostsRepository.findByPostId(postId)
 			.orElseGet(() -> {
-				Posts newPost = Posts.builder()
+				Post newPost = Post.builder()
 					.postId(postId)
 					.channelId(channelId)
 					.content(mongoPost.getContent())
 					.link(mongoPost.getLink())
 					.siteName(mongoPost.getSource() != null ? mongoPost.getSource() : mongoPost.getSiteName())
-					.createdAt(mongoPost.getCreatedAt().format(formatter)) //.format(formatter)
+					.createdAt(mongoPost.getCreatedAt().format(formatter))
 					.updatedAt(mongoPost.getUpdatedAt().format(formatter))
 					.build();
 				log.info("[Neo4j Service] Neo4j에 Post 데이터 생성: postId = " + postId);
@@ -66,7 +69,7 @@ public class SavingPromotionService {
 			.anyMatch(promotes -> promotes.getChannel().getId().equals(channelId));
 
 		if (!alreadyPromoted) {
-			Promotes promotes = new Promotes(channel);
+			Promotes promotes = Promotes.link(channel);
 			post.getPromotesChannels().add(promotes);
 			neoPostsRepository.save(post);  // Post가 관계 주체
 			log.info("[Neo4j Service] 홍보 관계 생성 완료");

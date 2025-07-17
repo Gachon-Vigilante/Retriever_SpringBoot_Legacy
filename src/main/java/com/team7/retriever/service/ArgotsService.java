@@ -1,6 +1,6 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.entity.Argot;
+import com.team7.retriever.domain.agrot.domain.document.Argot;
 import com.team7.retriever.repository.ArgotsRepository;
 
 import org.springframework.stereotype.Service;

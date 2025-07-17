@@ -5,7 +5,7 @@ import com.team7.retriever.neo4j.repository.NeoPostsRepository;
 import com.team7.retriever.neo4j.entity.Channel;
 import com.team7.retriever.neo4j.entity.Promotes;
 import com.team7.retriever.neo4j.entity.Post;
-import com.team7.retriever.entity.Posts;
+import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.service.PostsService;
 
 import jakarta.transaction.Transactional;

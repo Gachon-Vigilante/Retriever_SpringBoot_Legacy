@@ -1,6 +1,6 @@
 package com.team7.retriever.repository;
 
-import com.team7.retriever.entity.Posts;
+import com.team7.retriever.domain.post.domain.document.Posts;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;

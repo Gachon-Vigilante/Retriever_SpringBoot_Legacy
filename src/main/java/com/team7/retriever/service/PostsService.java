@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
-import com.team7.retriever.entity.Posts;
+import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.repository.PostsRepository;
 
 import org.springframework.stereotype.Service;

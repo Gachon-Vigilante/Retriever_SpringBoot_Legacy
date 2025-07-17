@@ -1,6 +1,6 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.entity.ChInfo;
+import com.team7.retriever.domain.channel.domain.document.ChInfo;
 import com.team7.retriever.repository.ChInfoRepository;
 
 import org.springframework.stereotype.Service;

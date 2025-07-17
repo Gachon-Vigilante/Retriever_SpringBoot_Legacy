@@ -1,6 +1,6 @@
 package com.team7.retriever.repository;
 
-import com.team7.retriever.entity.Bookmarks;
+import com.team7.retriever.domain.bookmark.domain.document.Bookmarks;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

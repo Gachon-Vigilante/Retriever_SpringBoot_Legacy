@@ -1,6 +1,6 @@
 package com.team7.retriever.repository;
 
-import com.team7.retriever.entity.ChInfo;
+import com.team7.retriever.domain.channel.domain.document.ChInfo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

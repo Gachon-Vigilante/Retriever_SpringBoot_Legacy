@@ -1,10 +1,9 @@
-package com.team7.retriever.entity;
+package com.team7.retriever.domain.bookmark.domain.document;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 

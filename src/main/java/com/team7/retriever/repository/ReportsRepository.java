@@ -1,6 +1,6 @@
 package com.team7.retriever.repository;
 
-import com.team7.retriever.entity.Reports;
+import com.team7.retriever.domain.report.domain.document.Reports;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

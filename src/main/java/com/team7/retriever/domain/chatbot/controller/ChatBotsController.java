@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.chatbot.controller;
 
-import com.team7.retriever.entity.ChatBots;
+import com.team7.retriever.domain.chatbot.domain.document.ChatBots;
 import com.team7.retriever.service.ChatBotsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

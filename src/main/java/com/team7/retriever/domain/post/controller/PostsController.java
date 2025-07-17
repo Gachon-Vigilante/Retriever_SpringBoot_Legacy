@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.post.controller;
 
-import com.team7.retriever.entity.Posts;
+import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.service.PostsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.entity.Reports;
+import com.team7.retriever.domain.report.domain.document.Reports;
 import com.team7.retriever.repository.ReportsRepository;
 
 import org.springframework.stereotype.Service;

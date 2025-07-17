@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.channel.controller.dto.response.ChannelInfoResponse;
-import com.team7.retriever.entity.Posts;
+import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.neo4j.service.SavingPromotionService;
 
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.team7.retriever.entity;
+package com.team7.retriever.domain.report.domain.document;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;

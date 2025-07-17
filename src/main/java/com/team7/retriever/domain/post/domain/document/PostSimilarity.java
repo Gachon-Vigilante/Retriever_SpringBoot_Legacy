@@ -1,4 +1,4 @@
-package com.team7.retriever.entity;
+package com.team7.retriever.domain.post.domain.document;
 
 import lombok.Getter;
 import lombok.Setter;

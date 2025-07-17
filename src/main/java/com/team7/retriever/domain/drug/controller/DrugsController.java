@@ -1,7 +1,7 @@
 package com.team7.retriever.domain.drug.controller;
 
 
-import com.team7.retriever.entity.Drugs;
+import com.team7.retriever.domain.drug.domain.document.Drugs;
 import com.team7.retriever.service.DrugsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

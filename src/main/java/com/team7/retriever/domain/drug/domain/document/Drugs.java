@@ -1,11 +1,9 @@
-package com.team7.retriever.entity;
+package com.team7.retriever.domain.drug.domain.document;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter

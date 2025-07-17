@@ -1,4 +1,4 @@
-package com.team7.retriever.entity;
+package com.team7.retriever.domain.crawling.domain.document;
 
 import lombok.Builder;
 import lombok.Getter;

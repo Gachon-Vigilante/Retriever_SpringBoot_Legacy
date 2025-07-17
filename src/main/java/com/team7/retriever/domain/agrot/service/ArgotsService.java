@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.agrot.service;
 
 import com.team7.retriever.domain.agrot.domain.document.Argot;
 import com.team7.retriever.domain.agrot.domain.repository.ArgotsRepository;

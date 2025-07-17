@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.chatbot.service;
 
 import com.team7.retriever.domain.chatbot.domain.document.ChatBots;
 import com.team7.retriever.domain.chatbot.domain.repository.ChatBotsRepository;

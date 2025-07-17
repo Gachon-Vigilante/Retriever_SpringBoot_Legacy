@@ -1,8 +1,9 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.channel.service;
 
 import com.team7.retriever.domain.channel.controller.dto.response.ChannelInfoResponse;
 import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.neo4j.service.SavingPromotionService;
+import com.team7.retriever.domain.post.service.PostsService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

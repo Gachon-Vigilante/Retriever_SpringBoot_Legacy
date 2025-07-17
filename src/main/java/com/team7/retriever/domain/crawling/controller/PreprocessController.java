@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.crawling.controller;
 
-import com.team7.retriever.service.PreprocessService;
+import com.team7.retriever.domain.crawling.service.PreprocessService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

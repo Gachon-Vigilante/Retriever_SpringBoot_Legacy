@@ -1,7 +1,7 @@
 package com.team7.retriever.domain.report.controller;
 
 import com.team7.retriever.domain.report.domain.document.Reports;
-import com.team7.retriever.service.ReportsService;
+import com.team7.retriever.domain.report.service.ReportsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

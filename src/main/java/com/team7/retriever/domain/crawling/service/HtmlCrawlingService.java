@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.crawling.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

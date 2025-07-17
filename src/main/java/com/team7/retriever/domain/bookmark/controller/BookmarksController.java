@@ -2,7 +2,7 @@ package com.team7.retriever.domain.bookmark.controller;
 
 import com.team7.retriever.domain.bookmark.controller.dto.request.BookmarksRequest;
 import com.team7.retriever.domain.bookmark.domain.document.Bookmarks;
-import com.team7.retriever.service.BookmarksService;
+import com.team7.retriever.domain.bookmark.service.BookmarksService;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.team7.retriever.domain.channel.controller;
 
 import com.team7.retriever.domain.channel.domain.document.ChannelSimilarity;
-import com.team7.retriever.service.ChSimilarityService;
+import com.team7.retriever.domain.channel.service.ChSimilarityService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

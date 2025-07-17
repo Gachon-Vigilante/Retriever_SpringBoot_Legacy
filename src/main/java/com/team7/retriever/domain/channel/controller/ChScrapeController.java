@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.channel.controller;
 
-import com.team7.retriever.service.ChScrapeService;
+import com.team7.retriever.domain.channel.service.ChScrapeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

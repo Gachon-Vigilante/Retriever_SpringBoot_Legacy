@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.bookmark.service;
 
 import com.team7.retriever.domain.bookmark.domain.document.Bookmarks;
 import com.team7.retriever.domain.bookmark.domain.repository.BookmarksRepository;

@@ -1,6 +1,8 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.post.service;
 
+import com.team7.retriever.domain.crawling.service.HtmlCrawlingService;
 import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
+import com.team7.retriever.domain.crawling.service.PreprocessService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +14,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UpdateCheckService {
+public class PostUpdateCheckService {
 
 	private final PostsService postsService;
 	private final HtmlCrawlingService htmlCrawlingService;

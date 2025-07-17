@@ -1,7 +1,7 @@
 package com.team7.retriever.domain.channel.controller;
 
 import com.team7.retriever.domain.channel.domain.document.ChData;
-import com.team7.retriever.service.ChDataService;
+import com.team7.retriever.domain.channel.service.ChDataService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

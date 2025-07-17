@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.drug.service;
 
 import com.team7.retriever.domain.drug.domain.document.Drugs;
 import com.team7.retriever.domain.drug.domain.repository.DrugsRepository;

@@ -2,7 +2,7 @@ package com.team7.retriever.domain.agrot.controller;
 
 
 import com.team7.retriever.domain.agrot.domain.document.Argot;
-import com.team7.retriever.service.ArgotsService;
+import com.team7.retriever.domain.agrot.service.ArgotsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

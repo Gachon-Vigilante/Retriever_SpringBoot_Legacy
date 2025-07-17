@@ -2,7 +2,7 @@ package com.team7.retriever.domain.channel.controller;
 
 
 import com.team7.retriever.domain.channel.domain.document.ChInfo;
-import com.team7.retriever.service.ChInfoService;
+import com.team7.retriever.domain.channel.service.ChInfoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

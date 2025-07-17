@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.post.service;
 
 import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
 import com.team7.retriever.domain.post.domain.document.Posts;

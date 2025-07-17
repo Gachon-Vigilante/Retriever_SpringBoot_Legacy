@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.report.service;
 
 import com.team7.retriever.domain.report.domain.document.Reports;
 import com.team7.retriever.domain.report.domain.repository.ReportsRepository;

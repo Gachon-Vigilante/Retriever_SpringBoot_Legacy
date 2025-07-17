@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.channel.service;
 
 import com.team7.retriever.domain.channel.domain.document.ChInfo;
 import com.team7.retriever.domain.channel.domain.repository.ChInfoRepository;

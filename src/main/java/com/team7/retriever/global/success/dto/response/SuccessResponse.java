@@ -1,4 +1,4 @@
-package com.team7.retriever.handler.dto;
+package com.team7.retriever.global.success.dto.response;
 
 import com.team7.retriever.global.exception.base.BaseSuccessCode;
 

@@ -26,46 +26,11 @@ public class PostsController {
     @GetMapping("/id/{id}") 
     public Optional<Posts> getPostById(@PathVariable String id) { return postsService.getPostById(id); }
 
-    // null
-    // 태그로 조회
-    @GetMapping("/tag/{tag}")
-    public List<Posts> getPostsByTag(@PathVariable String tag) {
-        return postsService.getPostsByTag(tag);
-    }
-
     // 제목에 포함되는 것
     @GetMapping("/title/{title}")
     public List<Posts> getPostsByTitleContaining(@PathVariable String title) {
         return postsService.getPostsByTitleContaining(title);
     }
-
-    // 내용에 포함되는 것
-    @GetMapping("/content/{content}")
-    public List<Posts> getPostsByContentContaining(@PathVariable String content) {
-        return postsService.getPostsByContentContaining(content);
-    }
-
-    // 게시 사이트로 조회
-    @GetMapping("/site/{siteName}")
-    public List<Posts> getPostsBySiteName(@PathVariable String siteName) {
-        return postsService.getPostsBySiteName(siteName);
-    }
-
-    // promo == 타고 넘어가는 판매 사이트(채널)
-    // 프로모션 링크로 조회
-    @GetMapping("/promoLink")
-    public List<Posts> getPostsByPromoSiteLink(@RequestParam String promoSiteLink) {
-        return postsService.getPostsByPromoSiteLink(promoSiteLink);
-    }
-
-    /*
-    // 프로모션 이름으로 조회
-    @GetMapping("/promoName/{promoSiteName}")
-    public List<Posts> getPostsByPromoSiteName(@PathVariable String promoSiteName) {
-        return postsService.getPostsByPromoSiteName(promoSiteName);
-    }
-
-     */
 
     // 홍보하는 채널 아이디로 조회
     @GetMapping("/promoChannelId/{promoChannelId}")

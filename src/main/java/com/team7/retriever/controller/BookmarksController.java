@@ -25,13 +25,6 @@ public class BookmarksController {
         return ResponseEntity.ok(bookmarks);
     }
 
-    // 특정 유저 ID로 북마크 조회
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Bookmarks>> getBookmarksByUserId(@PathVariable String userId) {
-        List<Bookmarks> bookmarks = BookmarksService.getBookmarksByUserId(userId);
-        return ResponseEntity.ok(bookmarks);
-    }
-
     // 특정 북마크 ID로 북마크 조회
     @GetMapping("/id/{id}") /* 241231 수정 */
     public ResponseEntity<Bookmarks> getBookmarkById(@PathVariable String id) {

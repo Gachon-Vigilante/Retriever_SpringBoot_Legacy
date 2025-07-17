@@ -28,19 +28,4 @@ public class ReportsController {
     // 채널 아이디로 조회
     @GetMapping("/channelId")
     public List<Reports> getReportByChannelId(@RequestParam long channelId) { return reportsService.getReportByChId(channelId); }
-
-    // type에 포함
-    @GetMapping("/type")
-    public List<Reports> getReportsByType(@RequestParam String type) { return reportsService.getReportsByType(type); }
-
-
-    // content에 포함
-    @GetMapping("/content")
-    public List<Reports> getReportsByContent(@RequestParam String content) { return this.reportsService.getReportsByContent(content); }
-
-
-    // description에 포함
-    @GetMapping("/desc")
-    public List<Reports> getReportsByDescription(@RequestParam String description) { return this.reportsService.getReportsByDescription(description); }
-
 }

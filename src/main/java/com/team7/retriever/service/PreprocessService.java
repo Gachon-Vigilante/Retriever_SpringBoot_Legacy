@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team7.retriever.dto.PreprocessResponse;
 import com.team7.retriever.entity.Posts;
 import com.team7.retriever.repository.PostsRepository;
-import lombok.AllArgsConstructor;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +18,9 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PreprocessService {
+
     private final RestTemplate restTemplate;
     private final PostsRepository postsRepository;
     private final PostsService postsService;

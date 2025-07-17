@@ -13,12 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.List;
 
-import com.team7.retriever.auth.jwt.exception.TokenErrorCode;
-import com.team7.retriever.auth.jwt.provider.JwtTokenProvider;
-import com.team7.retriever.auth.jwt.provider.JwtValidationType;
-import com.team7.retriever.auth.jwt.service.TokenService;
-import com.team7.retriever.auth.security.AdminAuthentication;
-import com.team7.retriever.auth.security.MemberAuthentication;
+import com.team7.retriever.global.auth.jwt.exception.TokenErrorCode;
+import com.team7.retriever.global.auth.jwt.provider.JwtTokenProvider;
+import com.team7.retriever.global.auth.jwt.provider.JwtValidationType;
+import com.team7.retriever.global.auth.jwt.service.TokenService;
+import com.team7.retriever.global.auth.security.AdminAuthentication;
+import com.team7.retriever.global.auth.security.MemberAuthentication;
 import com.team7.retriever.dto.request.LoginRequest;
 import com.team7.retriever.dto.request.SignUpRequest;
 import com.team7.retriever.dto.response.LoginSuccessResponse;

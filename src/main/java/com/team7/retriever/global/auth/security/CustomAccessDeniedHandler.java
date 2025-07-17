@@ -1,4 +1,4 @@
-package com.team7.retriever.auth.security;
+package com.team7.retriever.global.auth.security;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

@@ -1,4 +1,4 @@
-package com.team7.retriever.auth.jwt.filter;
+package com.team7.retriever.global.auth.jwt.filter;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -13,14 +13,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.team7.retriever.auth.jwt.exception.TokenErrorCode;
-import com.team7.retriever.auth.security.AdminAuthentication;
-import com.team7.retriever.auth.security.MemberAuthentication;
+import com.team7.retriever.global.auth.jwt.exception.TokenErrorCode;
+import com.team7.retriever.global.auth.security.AdminAuthentication;
+import com.team7.retriever.global.auth.security.MemberAuthentication;
 import com.team7.retriever.entity.enums.Role;
-import com.team7.retriever.auth.jwt.provider.JwtTokenProvider;
-import com.team7.retriever.auth.jwt.provider.JwtValidationType;
+import com.team7.retriever.global.auth.jwt.provider.JwtTokenProvider;
+import com.team7.retriever.global.auth.jwt.provider.JwtValidationType;
 import com.team7.retriever.exception.UnauthorizedException;
-import com.team7.retriever.exception.UserErrorCode;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

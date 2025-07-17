@@ -1,4 +1,4 @@
-package com.team7.retriever.auth.cookie;
+package com.team7.retriever.global.auth.cookie;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;

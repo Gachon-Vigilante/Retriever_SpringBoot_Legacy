@@ -1,4 +1,4 @@
-package com.team7.retriever.auth.jwt.exception;
+package com.team7.retriever.global.auth.jwt.exception;
 
 
 import com.team7.retriever.exception.base.BaseErrorCode;

@@ -9,9 +9,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.team7.retriever.auth.jwt.filter.JwtAuthenticationFilter;
-import com.team7.retriever.auth.security.CustomAccessDeniedHandler;
-import com.team7.retriever.auth.security.CustomJwtAuthenticationEntryPoint;
+import com.team7.retriever.global.auth.jwt.filter.JwtAuthenticationFilter;
+import com.team7.retriever.global.auth.security.CustomAccessDeniedHandler;
+import com.team7.retriever.global.auth.security.CustomJwtAuthenticationEntryPoint;
 import com.team7.retriever.entity.enums.Role;
 
 import lombok.RequiredArgsConstructor;

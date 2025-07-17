@@ -1,4 +1,4 @@
-package com.team7.retriever.auth.redis;
+package com.team7.retriever.global.auth.redis;
 
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;

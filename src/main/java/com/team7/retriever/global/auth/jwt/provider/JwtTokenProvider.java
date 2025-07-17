@@ -1,4 +1,4 @@
-package com.team7.retriever.auth.jwt.provider;
+package com.team7.retriever.global.auth.jwt.provider;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.team7.retriever.auth.cookie.CookieProvider;
+import com.team7.retriever.global.auth.cookie.CookieProvider;
 import com.team7.retriever.dto.request.LoginRequest;
 import com.team7.retriever.dto.request.SignUpRequest;
 import com.team7.retriever.dto.response.LoginResponse;

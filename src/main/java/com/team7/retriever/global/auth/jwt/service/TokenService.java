@@ -1,13 +1,13 @@
-package com.team7.retriever.auth.jwt.service;
+package com.team7.retriever.global.auth.jwt.service;
 
 import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 
 import com.team7.retriever.exception.NotFoundException;
-import com.team7.retriever.auth.jwt.exception.TokenErrorCode;
-import com.team7.retriever.auth.redis.Token;
-import com.team7.retriever.auth.jwt.repository.TokenRepository;
+import com.team7.retriever.global.auth.jwt.exception.TokenErrorCode;
+import com.team7.retriever.global.auth.redis.Token;
+import com.team7.retriever.global.auth.jwt.repository.TokenRepository;
 import com.team7.retriever.exception.UnauthorizedException;
 
 import jakarta.servlet.http.Cookie;

@@ -42,8 +42,8 @@ public class CookieProvider {
 		return ResponseCookie.from(name, value)
 			.maxAge(maxAge)
 			.path("/")
-			.secure(true)
-			.sameSite("None")
+			.secure(false)
+			.sameSite("Lax")
 			.httpOnly(true)
 			.build();
 	}

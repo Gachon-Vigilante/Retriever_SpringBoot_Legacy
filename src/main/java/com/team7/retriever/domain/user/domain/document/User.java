@@ -23,7 +23,7 @@ public class User {
 	@Id
 	private String id;
 
-	private String employeeId;
+	private String loginId;
 
 	private String password;
 
@@ -37,9 +37,9 @@ public class User {
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
 
-	public static User create(String employeeId, String password, String name, Role role) {
+	public static User create(String loginId, String password, String name, Role role) {
 		return User.builder()
-			.employeeId(employeeId)
+			.loginId(loginId)
 			.password(password)
 			.name(name)
 			.role(role)

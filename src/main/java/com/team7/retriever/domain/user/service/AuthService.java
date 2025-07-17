@@ -44,13 +44,13 @@ public class AuthService {
 
 	@Transactional
 	public String signUp(SignUpRequest signUpRequest) {
-		String employeeId = signUpRequest.employeeId();
+		String loginId = signUpRequest.loginId();
 
-		if (userRepository.existsByEmployeeId(employeeId)) {
+		if (userRepository.existsByLoginId(loginId)) {
 			throw new BadRequestException(UserErrorCode.ALREADY_EXISTS);
 		}
 
-		User user = User.create(employeeId, passwordEncoder.encode(signUpRequest.password()),
+		User user = User.create(loginId, passwordEncoder.encode(signUpRequest.password()),
 			signUpRequest.name(), Role.USER);
 
 		userRepository.save(user);
@@ -59,10 +59,10 @@ public class AuthService {
 	}
 
 	public LoginSuccessResponse login(LoginRequest loginRequest) {
-		String employeeId = loginRequest.employeeId();
+		String loginId = loginRequest.loginId();
 		String password = loginRequest.password();
 
-		User user = findUserWithAuthenticate(employeeId, password);
+		User user = findUserWithAuthenticate(loginId, password);
 
 		Role role = user.getRole();
 		String userId = user.getId();
@@ -110,8 +110,8 @@ public class AuthService {
 	}
 
 	@Transactional
-	public String withdraw(String employeeId) {
-		User user = userRepository.findByEmployeeId(employeeId)
+	public String withdraw(String loginId) {
+		User user = userRepository.findByLoginId(loginId)
 			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
 
 		String userId = user.getId();
@@ -122,12 +122,12 @@ public class AuthService {
 			tokenService.deleteRefreshToken(user.getId());
 		}
 
-		log.info("회원 탈퇴가 완료되었습니다. employeeId: {}", employeeId);
+		log.info("회원 탈퇴가 완료되었습니다. loginId: {}", loginId);
 		return "회원 탈퇴가 완료되었습니다.";
 	}
 
-	private User findUserWithAuthenticate(String employeeId, String password) {
-		User user = userRepository.findByEmployeeId(employeeId)
+	private User findUserWithAuthenticate(String loginId, String password) {
+		User user = userRepository.findByLoginId(loginId)
 			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
 
 		if (!passwordEncoder.matches(password, user.getPassword())) {

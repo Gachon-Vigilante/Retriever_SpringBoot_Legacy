@@ -33,14 +33,14 @@ public class UserService {
 
 	@Transactional
 	public String grantRole(String adminId, GrantRequest grantRequest) {
-		String employeeId = grantRequest.employeeId();
+		String loginId = grantRequest.loginId();
 		Role role = grantRequest.role();
 
 		if (role == Role.ROOT){
 			throw new BadRequestException(UserErrorCode.CAN_NOT_GRANT_ROOT_ROLE);
 		}
 
-		User user = userRepository.findByEmployeeId(employeeId)
+		User user = userRepository.findByLoginId(loginId)
 			.orElseThrow(() -> new NotFoundException(UserErrorCode.NOT_FOUND));
 
 		if (user.getId().equals(adminId)) {
@@ -54,7 +54,7 @@ public class UserService {
 		user.updateRole(role);
 		userRepository.save(user);
 
-		log.info("employeeId: {} 에게 {} 역할을 부여했습니다.", employeeId, role);
+		log.info("loginId: {} 에게 {} 역할을 부여했습니다.", loginId, role);
 
 		return user.getName() + "님에게 " + role.getRoleName()
 			+ " 권한을 부여했습니다. 변경된 권한을 얻기 위해서는 로그아웃 후 다시 로그인해야 합니다.";

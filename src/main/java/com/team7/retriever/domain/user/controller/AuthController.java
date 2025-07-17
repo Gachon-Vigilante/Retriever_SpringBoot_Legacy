@@ -65,7 +65,7 @@ public class AuthController {
 	}
 
 	@DeleteMapping("/withdraw")
-	public String withdraw(@RequestParam String employeeId) {
-		return authService.withdraw(employeeId);
+	public String withdraw(@RequestParam String loginId) {
+		return authService.withdraw(loginId);
 	}
 }

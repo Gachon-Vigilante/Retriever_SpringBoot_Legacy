@@ -9,7 +9,7 @@ import com.team7.retriever.domain.user.domain.document.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
-	Optional<User> findByEmployeeId(String employeeId);
+	Optional<User> findByLoginId(String loginId);
 
-	boolean existsByEmployeeId(String employeeId);
+	boolean existsByLoginId(String loginId);
 }

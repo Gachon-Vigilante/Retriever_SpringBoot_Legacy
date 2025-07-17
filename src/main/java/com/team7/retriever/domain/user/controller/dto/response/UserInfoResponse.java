@@ -4,13 +4,13 @@ import com.team7.retriever.domain.user.domain.document.User;
 import com.team7.retriever.domain.user.domain.enums.Role;
 
 public record UserInfoResponse(
-	String employeeId,
+	String loginId,
 	String name,
 	Role role
 ) {
 	public static UserInfoResponse from(User user) {
 		return new UserInfoResponse(
-			user.getEmployeeId(),
+			user.getLoginId(),
 			user.getName(),
 			user.getRole()
 		);

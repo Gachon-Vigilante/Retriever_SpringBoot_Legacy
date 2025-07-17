@@ -1,6 +1,6 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.repository.PostHtmlRepository;
+import com.team7.retriever.domain.crawling.domain.repository.PostHtmlRepository;
 
 import org.springframework.stereotype.Service;
 

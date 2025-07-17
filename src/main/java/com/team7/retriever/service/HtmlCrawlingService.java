@@ -3,7 +3,7 @@ package com.team7.retriever.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team7.retriever.domain.crawling.domain.document.PostHtml;
-import com.team7.retriever.repository.PostHtmlRepository;
+import com.team7.retriever.domain.crawling.domain.repository.PostHtmlRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

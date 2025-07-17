@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.channel.domain.document.ChData;
-import com.team7.retriever.repository.ChDataRepository;
+import com.team7.retriever.domain.channel.domain.repository.ChDataRepository;
 
 import org.springframework.stereotype.Service;
 

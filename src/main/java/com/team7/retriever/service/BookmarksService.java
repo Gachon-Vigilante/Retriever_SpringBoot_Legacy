@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.bookmark.domain.document.Bookmarks;
-import com.team7.retriever.repository.BookmarksRepository;
+import com.team7.retriever.domain.bookmark.domain.repository.BookmarksRepository;
 
 import org.springframework.stereotype.Service;
 

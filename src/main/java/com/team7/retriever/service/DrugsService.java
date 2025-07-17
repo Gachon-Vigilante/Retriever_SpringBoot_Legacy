@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.drug.domain.document.Drugs;
-import com.team7.retriever.repository.DrugsRepository;
+import com.team7.retriever.domain.drug.domain.repository.DrugsRepository;
 
 import org.springframework.stereotype.Service;
 

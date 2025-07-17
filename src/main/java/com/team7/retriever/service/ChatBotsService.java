@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.chatbot.domain.document.ChatBots;
-import com.team7.retriever.repository.ChatBotsRepository;
+import com.team7.retriever.domain.chatbot.domain.repository.ChatBotsRepository;
 
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.team7.retriever.service;
 
 import com.team7.retriever.domain.channel.domain.document.ChannelSimilarity;
-import com.team7.retriever.repository.ChannelSimilarityRepository;
+import com.team7.retriever.domain.channel.domain.repository.ChannelSimilarityRepository;
 
 import org.springframework.stereotype.Service;
 

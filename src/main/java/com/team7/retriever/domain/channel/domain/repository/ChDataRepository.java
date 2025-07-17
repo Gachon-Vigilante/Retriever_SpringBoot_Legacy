@@ -1,4 +1,4 @@
-package com.team7.retriever.repository;
+package com.team7.retriever.domain.channel.domain.repository;
 
 import com.team7.retriever.domain.channel.domain.document.ChData;
 

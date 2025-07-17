@@ -1,4 +1,4 @@
-package com.team7.retriever.repository;
+package com.team7.retriever.domain.post.domain.repository;
 
 import com.team7.retriever.domain.post.domain.document.Posts;
 

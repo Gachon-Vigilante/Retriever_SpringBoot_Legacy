@@ -1,7 +1,7 @@
 package com.team7.retriever.global.auth.jwt.exception;
 
 
-import com.team7.retriever.exception.base.BaseErrorCode;
+import com.team7.retriever.global.exception.base.BaseErrorCode;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

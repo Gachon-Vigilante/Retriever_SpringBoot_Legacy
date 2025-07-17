@@ -1,4 +1,4 @@
-package com.team7.retriever.handler;
+package com.team7.retriever.global.exception.handler;
 
 import java.util.Optional;
 
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import com.team7.retriever.exception.BadRequestException;
-import com.team7.retriever.exception.ConflictException;
-import com.team7.retriever.exception.CustomException;
-import com.team7.retriever.exception.ForbiddenException;
-import com.team7.retriever.exception.NotFoundException;
-import com.team7.retriever.exception.UnauthorizedException;
-import com.team7.retriever.handler.dto.ErrorResponse;
+import com.team7.retriever.global.exception.BadRequestException;
+import com.team7.retriever.global.exception.ConflictException;
+import com.team7.retriever.global.exception.CustomException;
+import com.team7.retriever.global.exception.ForbiddenException;
+import com.team7.retriever.global.exception.NotFoundException;
+import com.team7.retriever.global.exception.UnauthorizedException;
+import com.team7.retriever.global.exception.handler.dto.response.ErrorResponse;
 
 import lombok.extern.slf4j.Slf4j;
 

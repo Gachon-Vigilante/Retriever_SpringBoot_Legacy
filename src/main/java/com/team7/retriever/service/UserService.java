@@ -9,9 +9,9 @@ import com.team7.retriever.dto.request.GrantRequest;
 import com.team7.retriever.dto.response.UserInfoResponse;
 import com.team7.retriever.entity.User;
 import com.team7.retriever.entity.enums.Role;
-import com.team7.retriever.exception.BadRequestException;
-import com.team7.retriever.exception.NotFoundException;
-import com.team7.retriever.exception.UserErrorCode;
+import com.team7.retriever.global.exception.BadRequestException;
+import com.team7.retriever.global.exception.NotFoundException;
+import com.team7.retriever.global.exception.UserErrorCode;
 import com.team7.retriever.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package com.team7.retriever.handler.dto;
+package com.team7.retriever.global.exception.handler.dto.response;
 
-import com.team7.retriever.exception.base.BaseErrorCode;
+import com.team7.retriever.global.exception.base.BaseErrorCode;
 
 public record ErrorResponse(
 	int status,

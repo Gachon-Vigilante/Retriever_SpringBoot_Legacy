@@ -1,6 +1,6 @@
 package com.team7.retriever.handler.dto;
 
-import com.team7.retriever.exception.base.BaseSuccessCode;
+import com.team7.retriever.global.exception.base.BaseSuccessCode;
 
 public record SuccessResponse<T>(
 	int status,

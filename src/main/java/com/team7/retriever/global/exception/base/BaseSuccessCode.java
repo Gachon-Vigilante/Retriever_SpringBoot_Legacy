@@ -1,4 +1,4 @@
-package com.team7.retriever.exception.base;
+package com.team7.retriever.global.exception.base;
 
 public interface BaseSuccessCode {
 	int getStatus();

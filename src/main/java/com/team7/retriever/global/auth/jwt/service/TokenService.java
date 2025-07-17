@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 
-import com.team7.retriever.exception.NotFoundException;
+import com.team7.retriever.global.exception.NotFoundException;
 import com.team7.retriever.global.auth.jwt.exception.TokenErrorCode;
 import com.team7.retriever.global.auth.redis.Token;
 import com.team7.retriever.global.auth.jwt.repository.TokenRepository;
-import com.team7.retriever.exception.UnauthorizedException;
+import com.team7.retriever.global.exception.UnauthorizedException;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;

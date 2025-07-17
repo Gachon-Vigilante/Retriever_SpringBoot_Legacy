@@ -19,7 +19,7 @@ import com.team7.retriever.global.auth.security.MemberAuthentication;
 import com.team7.retriever.entity.enums.Role;
 import com.team7.retriever.global.auth.jwt.provider.JwtTokenProvider;
 import com.team7.retriever.global.auth.jwt.provider.JwtValidationType;
-import com.team7.retriever.exception.UnauthorizedException;
+import com.team7.retriever.global.exception.UnauthorizedException;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

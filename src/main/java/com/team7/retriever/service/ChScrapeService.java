@@ -1,6 +1,6 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.dto.ChDataResponse;
+import com.team7.retriever.domain.channel.controller.dto.response.ChannelDataResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class ChScrapeService {
 		Map<String, String> requestBody = Map.of("channel_key", channelKey);
 		log.debug("\t\t\t\t[ChScrapeService] channel_key: " + channelKey);
 		// ResponseEntity<String> infoResponse = restTemplate.postForEntity(infoAPI, requestBody, String.class); // 사용X
-		ChDataResponse response = restTemplate.postForObject(api, requestBody, ChDataResponse.class);
+		ChannelDataResponse response = restTemplate.postForObject(api, requestBody, ChannelDataResponse.class);
 		String message = Objects.requireNonNull(response).getMessage(); // 응답이 비어있을 수 있음
 		String status = response.getStatus();
 		System.out.println("\t\t\t\t[ChScrapeService] " + message);

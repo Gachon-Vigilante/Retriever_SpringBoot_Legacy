@@ -3,7 +3,7 @@ package com.team7.retriever.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team7.retriever.dto.PreprocessResponse;
+import com.team7.retriever.domain.crawling.controller.dto.response.PreprocessResponse;
 import com.team7.retriever.entity.Posts;
 import com.team7.retriever.repository.PostsRepository;
 

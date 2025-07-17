@@ -1,6 +1,7 @@
-package com.team7.retriever.dto;
+package com.team7.retriever.domain.crawling.controller.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.*;
 
 import java.util.List;
@@ -9,8 +10,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class WebCrawlingRequest {
-    private List<String> queries;
+	private List<String> queries;
 
-    @JsonProperty("max_results")
-    private int max;
+	@JsonProperty("max_results")
+	private int max;
 }

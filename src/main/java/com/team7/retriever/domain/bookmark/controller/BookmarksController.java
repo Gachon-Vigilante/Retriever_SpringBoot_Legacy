@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.bookmark.controller;
 
-import com.team7.retriever.dto.BookmarksRequest;
+import com.team7.retriever.domain.bookmark.controller.dto.request.BookmarksRequest;
 import com.team7.retriever.entity.Bookmarks;
 import com.team7.retriever.service.BookmarksService;
 

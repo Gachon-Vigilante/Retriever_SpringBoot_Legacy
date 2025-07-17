@@ -1,6 +1,6 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.dto.UpdateCheckRequest;
+import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,14 +20,14 @@ public class UpdateCheckService {
 	private final PostSimilarityService postSimilarityService;
 
 	public void updateAllPost() {
-		List<UpdateCheckRequest> allPosts = postsService.getAllPostsForUpdate();
+		List<PostUpdateCheckRequest> allPosts = postsService.getAllPostsForUpdate();
 
-		for (UpdateCheckRequest post : allPosts) {
+		for (PostUpdateCheckRequest post : allPosts) {
 			updatePost(post);
 		}
 	}
 
-	public void updatePost(UpdateCheckRequest post) {
+	public void updatePost(PostUpdateCheckRequest post) {
 		String link = post.link();
 		String title = post.title();
 		String source = post.source();

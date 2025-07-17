@@ -1,7 +1,7 @@
 package com.team7.retriever.domain.post.controller;
 
-import com.team7.retriever.dto.PostUpdateRequest;
-import com.team7.retriever.dto.UpdateCheckRequest;
+import com.team7.retriever.domain.post.controller.dto.request.PostUpdateRequest;
+import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
 import com.team7.retriever.service.PostsService;
 import com.team7.retriever.service.PreprocessService;
 import com.team7.retriever.service.UpdateCheckService;
@@ -21,7 +21,7 @@ public class PostUpdateCheckController {
 
     // DB 데이터 조회 결과 테스트
     @GetMapping("/posts")
-    public List<UpdateCheckRequest> getPosts() {
+    public List<PostUpdateCheckRequest> getPosts() {
         return postsService.getAllPostsForUpdate();
     }
 

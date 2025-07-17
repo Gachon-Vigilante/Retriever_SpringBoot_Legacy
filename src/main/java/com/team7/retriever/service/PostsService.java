@@ -1,10 +1,9 @@
 package com.team7.retriever.service;
 
-import com.team7.retriever.dto.UpdateCheckRequest;
+import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
 import com.team7.retriever.entity.Posts;
 import com.team7.retriever.repository.PostsRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 
@@ -50,10 +49,10 @@ public class PostsService {
 		return postsRepository.findByLink(link, Sort.by(Sort.Order.asc("createdAt")));
 	}
 
-	public List<UpdateCheckRequest> getAllPostsForUpdate() {
+	public List<PostUpdateCheckRequest> getAllPostsForUpdate() {
 		return postsRepository.findAll().stream()
 			.filter(post -> !post.isDeleted())
-			.map(post -> new UpdateCheckRequest(
+			.map(post -> new PostUpdateCheckRequest(
 				post.getLink(),
 				post.getTitle(),
 				post.getSource()

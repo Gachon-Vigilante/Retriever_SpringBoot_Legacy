@@ -2,9 +2,9 @@ package com.team7.retriever.service;
 
 // import com.team7.retriever.dto.CrawlGoogleResponse;
 
-import com.team7.retriever.dto.SerpApiCrawlingResponse;
-import com.team7.retriever.dto.WebCrawlingRequest;
-import com.team7.retriever.dto.WebCrawlingResponse;
+import com.team7.retriever.domain.crawling.controller.dto.response.SerpApiCrawlingResponse;
+import com.team7.retriever.domain.crawling.controller.dto.request.WebCrawlingRequest;
+import com.team7.retriever.domain.crawling.controller.dto.response.WebCrawlingResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,12 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 
 /*

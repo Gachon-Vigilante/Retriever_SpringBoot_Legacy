@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.channel.controller;
 
-import com.team7.retriever.dto.ChannelInfoRequest;
+import com.team7.retriever.domain.channel.controller.dto.request.ChannelInfoRequest;
 import com.team7.retriever.service.ChannelInfoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

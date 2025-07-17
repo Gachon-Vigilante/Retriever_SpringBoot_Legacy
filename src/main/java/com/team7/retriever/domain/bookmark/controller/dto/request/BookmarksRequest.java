@@ -1,4 +1,4 @@
-package com.team7.retriever.dto;
+package com.team7.retriever.domain.bookmark.controller.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class BookmarksRequest {
-    private String channelId;
-    private String userId;
+	private String channelId;
+	private String userId;
 
 }

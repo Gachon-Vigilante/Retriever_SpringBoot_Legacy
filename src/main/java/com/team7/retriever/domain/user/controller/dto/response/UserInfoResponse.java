@@ -1,7 +1,7 @@
-package com.team7.retriever.dto.response;
+package com.team7.retriever.domain.user.controller.dto.response;
 
-import com.team7.retriever.entity.User;
-import com.team7.retriever.entity.enums.Role;
+import com.team7.retriever.domain.user.domain.document.User;
+import com.team7.retriever.domain.user.domain.enums.Role;
 
 public record UserInfoResponse(
 	String employeeId,

@@ -1,4 +1,4 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.user.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,18 +19,18 @@ import com.team7.retriever.global.auth.jwt.provider.JwtValidationType;
 import com.team7.retriever.global.auth.jwt.service.TokenService;
 import com.team7.retriever.global.auth.security.AdminAuthentication;
 import com.team7.retriever.global.auth.security.MemberAuthentication;
-import com.team7.retriever.dto.request.LoginRequest;
-import com.team7.retriever.dto.request.SignUpRequest;
-import com.team7.retriever.dto.response.LoginSuccessResponse;
-import com.team7.retriever.dto.response.ReissueResponse;
-import com.team7.retriever.entity.User;
-import com.team7.retriever.entity.enums.Role;
+import com.team7.retriever.domain.user.controller.dto.request.LoginRequest;
+import com.team7.retriever.domain.user.controller.dto.request.SignUpRequest;
+import com.team7.retriever.domain.user.controller.dto.response.LoginSuccessResponse;
+import com.team7.retriever.domain.user.controller.dto.response.ReissueResponse;
+import com.team7.retriever.domain.user.domain.document.User;
+import com.team7.retriever.domain.user.domain.enums.Role;
 import com.team7.retriever.global.exception.BadRequestException;
 import com.team7.retriever.global.exception.CustomException;
 import com.team7.retriever.global.exception.NotFoundException;
 import com.team7.retriever.global.exception.UnauthorizedException;
 import com.team7.retriever.global.exception.UserErrorCode;
-import com.team7.retriever.repository.UserRepository;
+import com.team7.retriever.domain.user.domain.repository.UserRepository;
 
 @Slf4j
 @Service

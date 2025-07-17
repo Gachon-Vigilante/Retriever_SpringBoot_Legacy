@@ -1,4 +1,4 @@
-package com.team7.retriever.entity;
+package com.team7.retriever.domain.user.domain.document;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.team7.retriever.entity.enums.Role;
+import com.team7.retriever.domain.user.domain.enums.Role;
 
 import lombok.AccessLevel;
 import lombok.Getter;

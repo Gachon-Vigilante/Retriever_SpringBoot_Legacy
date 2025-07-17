@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.user.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team7.retriever.global.auth.cookie.CookieProvider;
-import com.team7.retriever.dto.request.LoginRequest;
-import com.team7.retriever.dto.request.SignUpRequest;
-import com.team7.retriever.dto.response.LoginResponse;
-import com.team7.retriever.dto.response.LoginSuccessResponse;
-import com.team7.retriever.dto.response.ReissueResponse;
-import com.team7.retriever.service.AuthService;
+import com.team7.retriever.domain.user.controller.dto.request.LoginRequest;
+import com.team7.retriever.domain.user.controller.dto.request.SignUpRequest;
+import com.team7.retriever.domain.user.controller.dto.response.LoginResponse;
+import com.team7.retriever.domain.user.controller.dto.response.LoginSuccessResponse;
+import com.team7.retriever.domain.user.controller.dto.response.ReissueResponse;
+import com.team7.retriever.domain.user.service.AuthService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

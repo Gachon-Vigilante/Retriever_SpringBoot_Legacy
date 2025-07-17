@@ -1,4 +1,4 @@
-package com.team7.retriever.entity.enums;
+package com.team7.retriever.domain.user.domain.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

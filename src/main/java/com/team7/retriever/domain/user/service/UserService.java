@@ -1,18 +1,18 @@
-package com.team7.retriever.service;
+package com.team7.retriever.domain.user.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.team7.retriever.dto.request.GrantRequest;
-import com.team7.retriever.dto.response.UserInfoResponse;
-import com.team7.retriever.entity.User;
-import com.team7.retriever.entity.enums.Role;
+import com.team7.retriever.domain.user.controller.dto.request.GrantRequest;
+import com.team7.retriever.domain.user.controller.dto.response.UserInfoResponse;
+import com.team7.retriever.domain.user.domain.document.User;
+import com.team7.retriever.domain.user.domain.enums.Role;
 import com.team7.retriever.global.exception.BadRequestException;
 import com.team7.retriever.global.exception.NotFoundException;
 import com.team7.retriever.global.exception.UserErrorCode;
-import com.team7.retriever.repository.UserRepository;
+import com.team7.retriever.domain.user.domain.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

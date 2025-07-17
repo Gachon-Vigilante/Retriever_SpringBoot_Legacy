@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.team7.retriever.global.auth.jwt.filter.JwtAuthenticationFilter;
 import com.team7.retriever.global.auth.security.CustomAccessDeniedHandler;
 import com.team7.retriever.global.auth.security.CustomJwtAuthenticationEntryPoint;
-import com.team7.retriever.entity.enums.Role;
+import com.team7.retriever.domain.user.domain.enums.Role;
 
 import lombok.RequiredArgsConstructor;
 

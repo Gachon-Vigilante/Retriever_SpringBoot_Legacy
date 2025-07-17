@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.user.controller;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.team7.retriever.dto.request.GrantRequest;
-import com.team7.retriever.dto.response.UserInfoResponse;
-import com.team7.retriever.service.UserService;
+import com.team7.retriever.domain.user.controller.dto.request.GrantRequest;
+import com.team7.retriever.domain.user.controller.dto.response.UserInfoResponse;
+import com.team7.retriever.domain.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 

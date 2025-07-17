@@ -1,4 +1,4 @@
-package com.team7.retriever.dto.response;
+package com.team7.retriever.domain.user.controller.dto.response;
 
 public record ReissueResponse(
 	String accessToken,

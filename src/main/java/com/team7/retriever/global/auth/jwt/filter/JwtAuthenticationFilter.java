@@ -16,7 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.team7.retriever.global.auth.jwt.exception.TokenErrorCode;
 import com.team7.retriever.global.auth.security.AdminAuthentication;
 import com.team7.retriever.global.auth.security.MemberAuthentication;
-import com.team7.retriever.entity.enums.Role;
+import com.team7.retriever.domain.user.domain.enums.Role;
 import com.team7.retriever.global.auth.jwt.provider.JwtTokenProvider;
 import com.team7.retriever.global.auth.jwt.provider.JwtValidationType;
 import com.team7.retriever.global.exception.UnauthorizedException;

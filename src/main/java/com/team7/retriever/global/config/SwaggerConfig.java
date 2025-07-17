@@ -1,4 +1,4 @@
-package com.team7.retriever.config;
+package com.team7.retriever.global.config;
 
 import java.util.List;
 

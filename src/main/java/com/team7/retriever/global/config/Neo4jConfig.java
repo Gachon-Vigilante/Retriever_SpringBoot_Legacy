@@ -1,4 +1,4 @@
-package com.team7.retriever.config;
+package com.team7.retriever.global.config;
 
 import org.springframework.data.neo4j.core.Neo4jClient;
 import org.springframework.data.neo4j.core.Neo4jTemplate;

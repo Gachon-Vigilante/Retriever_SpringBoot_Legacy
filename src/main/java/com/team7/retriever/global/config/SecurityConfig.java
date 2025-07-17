@@ -2,6 +2,7 @@ package com.team7.retriever.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -56,7 +57,8 @@ public class SecurityConfig {
 					.accessDeniedHandler(customAccessDeniedHandler));
 
 		http.authorizeHttpRequests(auth ->
-				auth.requestMatchers(getAuthWhitelist()).permitAll()
+				auth.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+					.requestMatchers(getAuthWhitelist()).permitAll()
 					.requestMatchers(AUTH_ADMIN_ONLY).hasAnyAuthority(Role.ADMIN.getRoleName(), Role.ROOT.getRoleName())
 					.requestMatchers(AUTH_ROOT_ONLY).hasAuthority(Role.ROOT.getRoleName())
 					.anyRequest().authenticated()

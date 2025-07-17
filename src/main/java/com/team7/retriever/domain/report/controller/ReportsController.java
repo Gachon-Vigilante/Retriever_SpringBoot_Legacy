@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.report.controller;
 
 import com.team7.retriever.entity.Reports;
 import com.team7.retriever.service.ReportsService;

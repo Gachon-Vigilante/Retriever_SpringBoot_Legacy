@@ -1,6 +1,5 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.channel.controller;
 
-import com.team7.retriever.dto.ChatArgotDrugDTO;
 import com.team7.retriever.entity.ChData;
 import com.team7.retriever.service.ChDataService;
 import lombok.AllArgsConstructor;
@@ -11,7 +10,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/chat")
-public class ChDataController {
+public class ChannelDataController {
 
     private final ChDataService chDataService;
 

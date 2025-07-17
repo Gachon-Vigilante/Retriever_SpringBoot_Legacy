@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.channel.controller;
 
 import com.team7.retriever.dto.ChannelInfoRequest;
 import com.team7.retriever.service.ChannelInfoService;

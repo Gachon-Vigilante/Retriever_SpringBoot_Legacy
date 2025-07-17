@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.crawling.controller;
 
 import com.team7.retriever.service.ArgotsService;
 import com.team7.retriever.service.UpdateCheckService;

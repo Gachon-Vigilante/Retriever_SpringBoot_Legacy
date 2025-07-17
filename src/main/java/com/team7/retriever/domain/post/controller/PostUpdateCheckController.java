@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.post.controller;
 
 import com.team7.retriever.dto.PostUpdateRequest;
 import com.team7.retriever.dto.UpdateCheckRequest;
@@ -6,7 +6,7 @@ import com.team7.retriever.service.PostsService;
 import com.team7.retriever.service.PreprocessService;
 import com.team7.retriever.service.UpdateCheckService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/post-update")
-public class UpdateCheckController {
+public class PostUpdateCheckController {
     private final PostsService postsService;
     private final PreprocessService preprocessService;
     private final UpdateCheckService updateCheckService;

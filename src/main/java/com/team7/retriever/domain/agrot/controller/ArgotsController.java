@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.agrot.controller;
 
 
 import com.team7.retriever.entity.Argot;
@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor

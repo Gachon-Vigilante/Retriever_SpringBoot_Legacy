@@ -1,16 +1,14 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.drug.controller;
 
 
 import com.team7.retriever.entity.Drugs;
 import com.team7.retriever.service.DrugsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor

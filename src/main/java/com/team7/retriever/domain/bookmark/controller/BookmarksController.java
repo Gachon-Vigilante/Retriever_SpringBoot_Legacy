@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.bookmark.controller;
 
 import com.team7.retriever.dto.BookmarksRequest;
 import com.team7.retriever.entity.Bookmarks;

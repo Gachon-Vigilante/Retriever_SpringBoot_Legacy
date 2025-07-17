@@ -1,4 +1,4 @@
-package com.team7.retriever.controller;
+package com.team7.retriever.domain.post.controller;
 
 import com.team7.retriever.entity.Posts;
 import com.team7.retriever.service.PostsService;

@@ -1,6 +1,6 @@
 package com.team7.retriever.domain.post.service;
 
-import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
+import com.team7.retriever.domain.crawling.controller.dto.request.UpdateCheckRequest;
 import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.domain.post.domain.repository.PostsRepository;
 
@@ -49,10 +49,10 @@ public class PostsService {
 		return postsRepository.findByLink(link, Sort.by(Sort.Order.asc("createdAt")));
 	}
 
-	public List<PostUpdateCheckRequest> getAllPostsForUpdate() {
+	public List<UpdateCheckRequest> getAllPostsForUpdate() {
 		return postsRepository.findAll().stream()
 			.filter(post -> !post.isDeleted())
-			.map(post -> new PostUpdateCheckRequest(
+			.map(post -> new UpdateCheckRequest(
 				post.getLink(),
 				post.getTitle(),
 				post.getSource()

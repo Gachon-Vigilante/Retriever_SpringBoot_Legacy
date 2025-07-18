@@ -9,7 +9,6 @@ import com.team7.retriever.domain.crawling.controller.dto.response.SerpApiCrawli
 import com.team7.retriever.domain.crawling.controller.dto.request.WebCrawlingRequest;
 import com.team7.retriever.domain.crawling.controller.dto.response.WebCrawlingResponse;
 import com.team7.retriever.domain.post.service.PostSimilarityService;
-import com.team7.retriever.domain.post.service.PostUpdateCheckService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,12 +40,12 @@ public class WebCrawlingService {
 	private final ArgotsService argotsService;
 	private final PostSimilarityService postSimilarityService;
 	private final ChannelInfoService channelInfoService;
-	private final PostUpdateCheckService postUpdateCheckService;
+	private final UpdateCheckService updateCheckService;
 
 	@Scheduled(cron = "0 0 5 * * SUN") // 매주 일요일 오전 5시 실행 -> 기존 데이터 업데이트 체크하는 메서드 끝나면 새로운 데이터 수집 실행
 	public void sundayJob() {
 		log.info("[SunDayJob] UpdateCheckService 실행 시작");
-		postUpdateCheckService.updateAllPost();
+		updateCheckService.updateAllPost();
 		log.info("[SunDayJob] UpdateCheckService 실행 완료");
 
 		log.info("[SunDayJob] WebCrawlingService 실행 시작");

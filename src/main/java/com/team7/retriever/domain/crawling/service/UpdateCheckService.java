@@ -1,8 +1,8 @@
-package com.team7.retriever.domain.post.service;
+package com.team7.retriever.domain.crawling.service;
 
-import com.team7.retriever.domain.crawling.service.HtmlCrawlingService;
-import com.team7.retriever.domain.post.controller.dto.request.PostUpdateCheckRequest;
-import com.team7.retriever.domain.crawling.service.PreprocessService;
+import com.team7.retriever.domain.crawling.controller.dto.request.UpdateCheckRequest;
+import com.team7.retriever.domain.post.service.PostSimilarityService;
+import com.team7.retriever.domain.post.service.PostsService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PostUpdateCheckService {
+public class UpdateCheckService {
 
 	private final PostsService postsService;
 	private final HtmlCrawlingService htmlCrawlingService;
@@ -22,14 +22,14 @@ public class PostUpdateCheckService {
 	private final PostSimilarityService postSimilarityService;
 
 	public void updateAllPost() {
-		List<PostUpdateCheckRequest> allPosts = postsService.getAllPostsForUpdate();
+		List<UpdateCheckRequest> allPosts = postsService.getAllPostsForUpdate();
 
-		for (PostUpdateCheckRequest post : allPosts) {
+		for (UpdateCheckRequest post : allPosts) {
 			updatePost(post);
 		}
 	}
 
-	public void updatePost(PostUpdateCheckRequest post) {
+	public void updatePost(UpdateCheckRequest post) {
 		String link = post.link();
 		String title = post.title();
 		String source = post.source();

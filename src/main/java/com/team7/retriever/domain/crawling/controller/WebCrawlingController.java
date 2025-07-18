@@ -1,7 +1,7 @@
 package com.team7.retriever.domain.crawling.controller;
 
 import com.team7.retriever.domain.agrot.service.ArgotsService;
-import com.team7.retriever.domain.post.service.PostUpdateCheckService;
+import com.team7.retriever.domain.crawling.service.UpdateCheckService;
 import com.team7.retriever.domain.crawling.service.WebCrawlingService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class WebCrawlingController {
     private final WebCrawlingService webCrawlingService;
     private final ArgotsService argotsService;
-    private final PostUpdateCheckService postUpdateCheckService;
+    private final UpdateCheckService updateCheckService;
 
     // DB에서 데이터 받아서 실행
     // 기존 웹크롤링
@@ -39,7 +39,7 @@ public class WebCrawlingController {
     // DB 데이터 업데이트 사항 확인
     @GetMapping("/updates")
     public void updateCheck() {
-        postUpdateCheckService.updateAllPost();
+        updateCheckService.updateAllPost();
     }
 
 }

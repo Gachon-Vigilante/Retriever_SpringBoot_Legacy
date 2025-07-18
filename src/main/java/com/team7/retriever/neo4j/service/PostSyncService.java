@@ -39,21 +39,43 @@ public class PostSyncService {
 		// 	}
 		// }
 
+		// for (Posts mongoPost : mongoPosts) {
+		// 	String content = mongoPost.getContent();
+		// 	String link = mongoPost.getLink();  // 추가
+		// 	String postId = mongoPost.getId();
+		//
+		// 	if (content != null && link != null && postId != null) {
+		// 		try {
+		// 			Optional<Post> optional = neoPostRepository.findOneByContentAndLinkAndPostIdIsNull(content, link);
+		//
+		// 			if (optional.isPresent()) {
+		// 				Post target = optional.get();
+		// 				target.setPostId(postId);
+		// 				neoPostRepository.save(target);
+		// 				successCount++;
+		// 				System.out.println("✅ 성공: postId=" + postId + " | link=" + link);
+		// 			} else {
+		// 				System.out.println("⚠️ 대상 없음 (혹은 이미 있음): postId=" + postId + " | link=" + link);
+		// 			}
+		// 		} catch (Exception e) {
+		// 			System.out.println("❌ 실패: postId=" + postId + " | link=" + link);
+		// 			e.printStackTrace();
+		// 		}
+		// 	}
+		// }
+
 		for (Posts mongoPost : mongoPosts) {
 			String content = mongoPost.getContent();
-			String link = mongoPost.getLink();  // ← 추가
+			String link = mongoPost.getLink();
 			String postId = mongoPost.getId();
 
 			if (content != null && link != null && postId != null) {
 				try {
-					Optional<Post> optional = neoPostRepository.findOneByContentAndLinkAndPostIdIsNull(content, link);
+					int updated = neoPostRepository.updatePostIdByContentAndLink(content, link, postId);
 
-					if (optional.isPresent()) {
-						Post target = optional.get();
-						target.setPostId(postId);
-						neoPostRepository.save(target);
-						successCount++;
+					if (updated > 0) {
 						System.out.println("✅ 성공: postId=" + postId + " | link=" + link);
+						successCount++;
 					} else {
 						System.out.println("⚠️ 대상 없음 (혹은 이미 있음): postId=" + postId + " | link=" + link);
 					}
@@ -63,6 +85,7 @@ public class PostSyncService {
 				}
 			}
 		}
+
 
 
 		System.out.println("✅ postId 업데이트 완료: " + successCount + "건");

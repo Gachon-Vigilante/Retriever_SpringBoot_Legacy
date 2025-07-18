@@ -53,7 +53,7 @@ public class SavingPromotionService {
 			.orElseGet(() -> {
 				Post newPost = Post.builder()
 					.postId(postId)
-					.channelId(channelId)
+					// .channelId(channelId)
 					.content(mongoPost.getContent())
 					.link(mongoPost.getLink())
 					.siteName(mongoPost.getSource() != null ? mongoPost.getSource() : mongoPost.getSiteName())

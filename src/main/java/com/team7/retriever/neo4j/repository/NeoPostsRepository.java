@@ -38,5 +38,13 @@ public interface NeoPostsRepository extends Neo4jRepository<Post, String> {
 	""")
 	Optional<Post> findOneByContentAndLinkAndPostIdIsNull(String content, String link);
 
+	@Query("""
+		MATCH (p:Post)
+		WHERE p.content = $content AND p.link = $link AND p.postId IS NULL
+		SET p.postId = $postId
+		RETURN COUNT(p)
+	""")
+	int updatePostIdByContentAndLink(String content, String link, String postId);
+
 
 }

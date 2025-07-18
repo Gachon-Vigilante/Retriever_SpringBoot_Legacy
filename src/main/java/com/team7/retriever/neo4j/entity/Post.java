@@ -22,7 +22,8 @@ public class Post {
 
 	@Id
 	private String postId;
-	private Long channelId;
+	// private Long channelId;
+	private int cluster;
 	private String content;
 	private String link;
 	private String siteName;

@@ -27,3 +27,6 @@ spring.data.redis.password=<your-redis-password>
 jwt.secret=<your-jwt-secret>
 jwt.access-token-expire-time=<access-token-expire-time-in-milliseconds>
 jwt.refresh-token-expire-time=<refresh-token-expire-time-in-milliseconds>
+
+# CORS
+cors.allowed-origins=<your-allowed-origins>

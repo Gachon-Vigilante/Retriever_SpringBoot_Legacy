@@ -1,0 +1,43 @@
+package com.team7.retriever.domain.channel.service;
+
+import com.team7.retriever.domain.channel.domain.document.ChInfo;
+import com.team7.retriever.domain.channel.domain.repository.ChInfoRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ChInfoService {
+
+	private final ChInfoRepository chInfoRepository;
+
+	// 모든 채널 정보 조회
+	public List<ChInfo> getAllChannelInfo() {
+		return chInfoRepository.findAll();
+	}
+
+	// 채널 아이디로 해당 채널 조회
+	public Optional<ChInfo> getChannelInfoById(long id) {
+		return chInfoRepository.findById(id);
+	}
+
+	// 채널 링크로 해당 채널 조회
+	public Optional<ChInfo> getChannelByLink(String link) {
+		return chInfoRepository.findByLink(link);
+	}
+
+	/* 250102 추가 */
+	// 채널 이름에 포함
+	public List<ChInfo> getChannelInfoByTitleContaining(String title) {
+		return chInfoRepository.findByTitleContaining(title);
+	}
+
+	public boolean isChannelExists(String id) {
+		return chInfoRepository.existsById(id);
+	}
+}

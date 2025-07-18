@@ -26,7 +26,17 @@ public interface NeoPostsRepository extends Neo4jRepository<Post, String> {
 	Stream<Post> streamAllWithPromotesAndSimilar();
 
 	// postId 설정
-	@Query("MATCH (p:Post) WHERE p.content = $content SET p.postId = $postId RETURN p")
-	Optional<Post> updatePostIdByContent(@Param("content") String content, @Param("postId") String postId);
+	// @Query("MATCH (p:Post) WHERE p.content = $content SET p.postId = $postId RETURN p")
+	// Optional<Post> updatePostIdByContent(@Param("content") String content, @Param("postId") String postId);
+
+	@Query("""
+		MATCH (p:Post)
+		WHERE p.content = $content
+		  AND p.link = $link
+		  AND (p.postId IS NULL OR p.postId = '')
+		RETURN p
+	""")
+	Optional<Post> findOneByContentAndLinkAndPostIdIsNull(String content, String link);
+
 
 }

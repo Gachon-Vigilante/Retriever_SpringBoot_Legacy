@@ -13,6 +13,7 @@ import com.team7.retriever.domain.post.service.PostSimilarityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -42,6 +43,9 @@ public class WebCrawlingService {
 	private final ChannelInfoService channelInfoService;
 	private final UpdateCheckService updateCheckService;
 
+	@Value("${flask.url}")
+	private String flaskUrl;
+
 	@Scheduled(cron = "0 0 5 * * SUN") // 매주 일요일 오전 5시 실행 -> 기존 데이터 업데이트 체크하는 메서드 끝나면 새로운 데이터 수집 실행
 	public void sundayJob() {
 		log.info("[SunDayJob] UpdateCheckService 실행 시작");
@@ -60,7 +64,8 @@ public class WebCrawlingService {
 	// @Scheduled(cron = "0 0 5 * * *") // 매일 오전 5시마다 실행
 	@Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
 	public void webCrawling() {
-		String api = "http://127.0.0.1:5050/crawl/links";
+
+		String api = flaskUrl + "/crawl/links";
 
 		WebCrawlingRequest webCrawlingRequest = new WebCrawlingRequest();
 		webCrawlingRequest.setQueries(argotsService.getAllArgotsToListWtme());
@@ -135,7 +140,7 @@ public class WebCrawlingService {
 	// SeapAPI Web Link Crawling
 	@Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
 	public void webCrawlingSerpApi() {
-		String baseApi = "http://127.0.0.1:5050/crawl/links/serpapi";
+		String baseApi = flaskUrl + "/crawl/links/serpapi";
 
 		List<String> argotList = argotsService.getAllArgotsToList();
 		int max_results = 10;

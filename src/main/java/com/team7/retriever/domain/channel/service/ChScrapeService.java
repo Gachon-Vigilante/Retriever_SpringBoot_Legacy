@@ -5,6 +5,7 @@ import com.team7.retriever.domain.channel.controller.dto.response.ChannelDataRes
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,10 +19,13 @@ public class ChScrapeService {
 
 	private final RestTemplate restTemplate;
 
+	@Value("${flask.url}")
+	private String flaskUrl;
+
 	// 스케줄 1 에서 실행되는 메서드 (channelInfo -> channelScrape)
 	public void channelScrape(String channelKey) {
 		// String infoAPI = "http://127.0.0.1:5050/telegram/channel/info";
-		String api = "http://127.0.0.1:5050/telegram/channel/scrape";
+		String api = flaskUrl + "/telegram/channel/scrape";
 
 		Map<String, String> requestBody = Map.of("channel_key", channelKey);
 		log.debug("\t\t\t\t[ChScrapeService] channel_key: " + channelKey);

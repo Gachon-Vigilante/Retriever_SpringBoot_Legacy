@@ -8,6 +8,7 @@ import com.team7.retriever.domain.post.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -29,10 +30,13 @@ public class ChannelInfoService {
 	private final PostsService postsService;
 	private final SavingPromotionService savingPromotionService;
 
+	@Value("${flask.url}")
+	private String flaskUrl;
+
 	// 채널 정보 수집 모듈 호출하는 메서드
 
 	public ChannelInfoResponse getChannelInfo(String inviteToken, String savedPostId) {
-		String api = "http://127.0.0.1:5050/telegram/channel/info";
+		String api = flaskUrl + "/telegram/channel/info";
 		Map<String, String> requestBody = Map.of("channel_key", inviteToken);
 		System.out.println("\t\t\t[ChannelInfoService] inviteToken: " + inviteToken);
 

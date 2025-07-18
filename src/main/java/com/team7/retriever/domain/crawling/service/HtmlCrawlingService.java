@@ -8,6 +8,7 @@ import com.team7.retriever.domain.crawling.domain.repository.PostHtmlRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,8 +25,11 @@ public class HtmlCrawlingService {
 	private final PostHtmlRepository postHtmlRepository;
 	private final ObjectMapper objectMapper;
 
+	@Value("${flask.url}")
+	private String flaskUrl;
+
 	public String crawlHtml(String link) {
-		String api = "http://127.0.0.1:5050/crawl/html";
+		String api = flaskUrl + "/crawl/html";
 		// ResponseEntity<String> response = restTemplate.postForEntity(api, link, String.class);
 		Map<String, String> requestBody = Map.of("link", link);
 		try {

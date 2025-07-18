@@ -3,6 +3,7 @@ package com.team7.retriever.domain.post.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,11 +17,14 @@ public class PostSimilarityService {
 
 	private final RestTemplate restTemplate;
 
+	@Value("${flask.url}")
+	private String flaskUrl;
+
 	public void calculateSimilarity() {
 		log.info("[PostSimilarityService] API 호출");
-		String api1 = "http://127.0.0.1:5050/cluster/post_preprocess";
-		String api2 = "http://127.0.0.1:5050/cluster/post_similarity";
-		String api3 = "http://127.0.0.1:5050/cluster/post_cluster";
+		String api1 = flaskUrl + "/cluster/post_preprocess";
+		String api2 = flaskUrl + "/cluster/post_similarity";
+		String api3 = flaskUrl + "/cluster/post_cluster";
 
 		ResponseEntity<Map> response = restTemplate.postForEntity(api1, null, Map.class);
 

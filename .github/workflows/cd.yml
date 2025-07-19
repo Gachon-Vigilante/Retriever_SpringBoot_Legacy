@@ -2,7 +2,7 @@ name: Retriever Spring Boot Backend CD pipeline
 
 on:
   workflow_run:
-    workflows: [ "Retriever Spring Boot Backend CI pipelinee" ]
+    workflows: [ "Retriever Spring Boot Backend CI pipeline" ]
     types:
       - completed
 

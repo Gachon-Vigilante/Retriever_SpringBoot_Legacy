@@ -53,10 +53,10 @@ public class SavingPromotionService {
 			.orElseGet(() -> {
 				Post newPost = Post.builder()
 					.postId(postId)
-					// .channelId(channelId)
 					.content(mongoPost.getContent())
 					.link(mongoPost.getLink())
 					.siteName(mongoPost.getSource() != null ? mongoPost.getSource() : mongoPost.getSiteName())
+					.cluster(mongoPost.getClusterLabel())
 					.createdAt(mongoPost.getCreatedAt().format(formatter))
 					.updatedAt(mongoPost.getUpdatedAt().format(formatter))
 					.build();
@@ -77,23 +77,6 @@ public class SavingPromotionService {
 			log.info("[Neo4j Service] 이미 관계가 존재합니다");
 		}
 
-        /*
-        // 관계 중복 방지 - 관계가 없으면 추가
-        boolean alreadyPromoted = channel.getPromotedPosts().stream()
-                .anyMatch(promotes -> promotes.getPost().getPostId().equals(postId));
-
-        if (!alreadyPromoted) {
-            Promotes promotes = new Promotes(post);
-            channel.getPromotedPosts().add(promotes);
-            neoChannelRepository.save(channel);  // 관계도 같이 저장됨
-            System.out.println("[Neo4j Service] 홍보 관계 생성 완료");
-            log.info("[Neo4j Service] 홍보 관계 생성 완료");
-        } else {
-            System.out.println("[Neo4j Service] 이미 관계가 존재합니다");
-            log.info("[Neo4j Service] 이미 관계가 존재합니다");
-        }
-
-         */
 	}
 
 }

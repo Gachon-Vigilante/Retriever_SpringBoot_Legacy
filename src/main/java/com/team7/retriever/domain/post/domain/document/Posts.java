@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,6 +26,8 @@ public class Posts {
     private String source;
     private List<String> promoSiteLink;
     private List<String> promoChannelId; // promoSiteName -> promoChannelId
+    @Field("cluster_label")
+    private int clusterLabel;
     private String author;
     private LocalDateTime timestamp;
     private LocalDateTime createdAt;

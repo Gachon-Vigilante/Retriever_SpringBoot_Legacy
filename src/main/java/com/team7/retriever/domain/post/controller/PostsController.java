@@ -1,5 +1,6 @@
 package com.team7.retriever.domain.post.controller;
 
+import com.team7.retriever.domain.post.controller.dto.response.PostPageResponse;
 import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.domain.post.service.PostsService;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ public class PostsController {
 
     // 전체 게시글 조회
     @GetMapping("/all")
-    public List<Posts> getAllPosts(
+    public PostPageResponse getAllPosts(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int size
     ) {

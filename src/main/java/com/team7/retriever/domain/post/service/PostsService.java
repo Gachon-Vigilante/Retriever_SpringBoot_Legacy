@@ -4,6 +4,8 @@ import com.team7.retriever.domain.crawling.controller.dto.request.UpdateCheckReq
 import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.domain.post.domain.repository.PostsRepository;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 
@@ -19,8 +21,9 @@ public class PostsService {
 	private final PostsRepository postsRepository;
 
 	// 전체 게시글 조회
-	public List<Posts> getAllPosts() {
-		return postsRepository.findAll();
+	public List<Posts> getAllPosts(int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		return postsRepository.findAll(pageable).getContent();
 	}
 
 	/* 241231 추가 */

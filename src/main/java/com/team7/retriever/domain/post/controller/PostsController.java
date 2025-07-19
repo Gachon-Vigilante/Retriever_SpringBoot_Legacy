@@ -17,8 +17,11 @@ public class PostsController {
 
     // 전체 게시글 조회
     @GetMapping("/all")
-    public List<Posts> getAllPosts() {
-        return postsService.getAllPosts();
+    public List<Posts> getAllPosts(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size
+    ) {
+        return postsService.getAllPosts(page, size);
     }
     
     /* 241231 추가 */

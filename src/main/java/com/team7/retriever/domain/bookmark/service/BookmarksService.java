@@ -14,26 +14,31 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookmarksService {
 
-	private final BookmarksRepository BookmarksRepository;
+	private final BookmarksRepository bookmarksRepository;
 
 	// 전체 조회
 	public List<Bookmarks> getAllBookmarks() {
-		return BookmarksRepository.findAll();
+		return bookmarksRepository.findAll();
+	}
+
+	// 유저 아이디로 조회
+	public List<Bookmarks> getBookmarksByUserId(String userId) {
+		return bookmarksRepository.findByUserId(userId);
 	}
 
 	// 아이디로 조회
 	public Optional<Bookmarks> getBookmarksById(String id) {
-		return BookmarksRepository.findById(id);
+		return bookmarksRepository.findById(id);
 	}
 
 	// 북마크 추가
 	public void saveBookmark(Bookmarks newBookmark) {
-		BookmarksRepository.save(newBookmark);
+		bookmarksRepository.save(newBookmark);
 	}
 
 	// 아이디로 삭제
 	public void deleteBookmarkById(String id) {
-		BookmarksRepository.deleteById(id);
+		bookmarksRepository.deleteById(id);
 	}
 
 }

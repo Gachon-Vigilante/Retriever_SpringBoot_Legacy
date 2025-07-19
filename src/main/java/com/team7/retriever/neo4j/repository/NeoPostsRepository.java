@@ -5,7 +5,6 @@ import com.team7.retriever.neo4j.entity.Post;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -25,19 +24,7 @@ public interface NeoPostsRepository extends Neo4jRepository<Post, String> {
 		""")
 	Stream<Post> streamAllWithPromotesAndSimilar();
 
-	// postId 설정
-	// @Query("MATCH (p:Post) WHERE p.content = $content SET p.postId = $postId RETURN p")
-	// Optional<Post> updatePostIdByContent(@Param("content") String content, @Param("postId") String postId);
-
-	@Query("""
-		MATCH (p:Post)
-		WHERE p.content = $content
-		  AND p.link = $link
-		  AND (p.postId IS NULL OR p.postId = '')
-		RETURN p
-	""")
-	Optional<Post> findOneByContentAndLinkAndPostIdIsNull(String content, String link);
-
+	// postId 업데이트
 	@Query("""
 		MATCH (p:Post)
 		WHERE p.content = $content AND p.link = $link AND p.postId IS NULL

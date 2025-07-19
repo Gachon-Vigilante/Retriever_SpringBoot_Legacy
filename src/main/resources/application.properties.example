@@ -30,3 +30,6 @@ jwt.refresh-token-expire-time=<refresh-token-expire-time-in-milliseconds>
 
 # CORS
 cors.allowed-origins=<your-allowed-origins>
+
+# Flask
+flask.url=<your-flask-url>

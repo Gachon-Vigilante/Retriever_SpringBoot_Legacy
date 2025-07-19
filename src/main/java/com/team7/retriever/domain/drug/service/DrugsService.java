@@ -6,6 +6,7 @@ import com.team7.retriever.domain.drug.domain.repository.DrugsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,6 +15,11 @@ import lombok.RequiredArgsConstructor;
 public class DrugsService {
 
 	private final DrugsRepository drugsRepository;
+
+	// 아이디로 조회
+	public Optional<Drugs> getDrugById(String id) {
+		return drugsRepository.findById(id);
+	}
 
 	// 전체 조회
 	public List<Drugs> getAllDrugs() {

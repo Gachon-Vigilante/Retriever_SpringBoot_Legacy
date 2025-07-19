@@ -6,6 +6,8 @@ import com.team7.retriever.domain.agrot.domain.repository.ArgotsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +22,11 @@ public class ArgotsService {
 		return argotsRepository.findAll();
 	}
 
+	// 아이디로 조회
+	public Optional<Argot> getArgotById(String id) {
+		return argotsRepository.findById(id);
+	}
+
 	// argot으로 조회 ; slang -> argot (name) 으로 변경
 	public List<Argot> getArgotsByArgot(String argot) {
 		return argotsRepository.findByArgot(argot);
@@ -30,7 +37,7 @@ public class ArgotsService {
 		return argotsRepository.findAll() // DB에서 전체 조회
 			.stream()
 			.map(Argot::getArgot) // argot 필드만 추출
-			.filter(argot -> argot != null) // argot이 null이 아닌 경우만
+			.filter(Objects::nonNull) // argot이 null이 아닌 경우만
 			.map(argot -> "t.me " + argot) // 각 argot 앞에 t.me 추가
 			.toList(); // 리스트로 변환
 	}
@@ -40,7 +47,7 @@ public class ArgotsService {
 		return argotsRepository.findAll()
 			.stream()
 			.map(Argot::getArgot)
-			.filter(argot -> argot != null)
+			.filter(Objects::nonNull)
 			.toList();
 	}
 }

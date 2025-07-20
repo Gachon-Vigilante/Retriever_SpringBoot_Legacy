@@ -62,7 +62,7 @@ public class WebCrawlingService {
 	// initialDelay = 5000 -> 초기 5초 지연 시간 설정 -> 스케줄 안에 같이 넣는 것 (참고 용으로 기록)
 	// @Scheduled(fixedDelay = 120000) // 테스트 용 - 한 사이클 종료 후 2분 지연 실행
 	// @Scheduled(cron = "0 0 5 * * *") // 매일 오전 5시마다 실행
-	@Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
+	// @Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
 	public void webCrawling() {
 
 		String api = flaskUrl + "/crawl/links";

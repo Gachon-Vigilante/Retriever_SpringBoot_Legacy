@@ -28,15 +28,13 @@ public class ChScrapeService {
 		String api = flaskUrl + "/telegram/channel/scrape";
 
 		Map<String, String> requestBody = Map.of("channel_key", channelKey);
-		log.debug("\t\t\t\t[ChScrapeService] channel_key: " + channelKey);
+		log.debug("[ChScrapeService] channel_key: " + channelKey);
 		// ResponseEntity<String> infoResponse = restTemplate.postForEntity(infoAPI, requestBody, String.class); // 사용X
 		ChannelDataResponse response = restTemplate.postForObject(api, requestBody, ChannelDataResponse.class);
 		String message = Objects.requireNonNull(response).getMessage(); // 응답이 비어있을 수 있음
 		String status = response.getStatus();
-		System.out.println("\t\t\t\t[ChScrapeService] " + message);
-		System.out.println("\t\t\t\t[ChScrapeService] 채널 " + channelKey + " 스크랩 상태: " + status);
 
-		log.info("\t\t\t\t[ChScrapeService] " + message);
-		log.info("\t\t\t\t[ChScrapeService] 채널 " + channelKey + " 스크랩 상태: " + status);
+		log.info("[ChScrapeService] " + message);
+		log.info("[ChScrapeService] 채널 " + channelKey + " 스크랩 상태: " + status);
 	}
 }

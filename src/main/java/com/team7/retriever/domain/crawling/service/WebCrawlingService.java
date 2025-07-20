@@ -22,12 +22,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-/*
-    @Service(스프링 빈에 등록된 클래스) 라서
-    어노테이션 내부에 이미 @Component가 포함되어 있기 때문에
-    @Component는 따로 추가하지 않아도 된다 고 한다
-( @Component는 스케줄러를 적용할 대상 클래스에 추가하는 것임 )
-*/
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -46,7 +40,7 @@ public class WebCrawlingService {
 	@Value("${flask.url}")
 	private String flaskUrl;
 
-	@Scheduled(cron = "0 0 5 * * SUN") // 매주 일요일 오전 5시 실행 -> 기존 데이터 업데이트 체크하는 메서드 끝나면 새로운 데이터 수집 실행
+	// @Scheduled(cron = "0 0 5 * * SUN") // 매주 일요일 오전 5시 실행 -> 기존 데이터 업데이트 체크하는 메서드 끝나면 새로운 데이터 수집 실행
 	public void sundayJob() {
 		log.info("[SunDayJob] UpdateCheckService 실행 시작");
 		updateCheckService.updateAllPost();
@@ -60,8 +54,6 @@ public class WebCrawlingService {
 
 	// 초(0-59) 분(0-59) 시간(0-23) 일(1-31) 월(1-12) 요일(0-6) (0: 일, 1: 월, 2:화, 3:수, 4:목, 5:금, 6:토)
 	// initialDelay = 5000 -> 초기 5초 지연 시간 설정 -> 스케줄 안에 같이 넣는 것 (참고 용으로 기록)
-	// @Scheduled(fixedDelay = 120000) // 테스트 용 - 한 사이클 종료 후 2분 지연 실행
-	// @Scheduled(cron = "0 0 5 * * *") // 매일 오전 5시마다 실행
 	// @Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
 	public void webCrawling() {
 
@@ -80,9 +72,6 @@ public class WebCrawlingService {
 			List<String> google = results.getGoogle();
 			List<String> telegram = results.getTelegrams();
 
-			// int inserted = 0;
-			// int updated = 0;
-
 			// google
 			log.info("[WebCrawlingService] Google 결과 시작");
 			if (google != null) {
@@ -96,7 +85,6 @@ public class WebCrawlingService {
 						String html = htmlCrawlingService.crawlHtml(googleResponse); // 크롤링 결과 받아옴
 						if (html != null) {
 							log.info("[WebCrawlingService] 내용 추출 완료");
-							// System.out.println("\t\t- " + html);
 							// log.debug("\t\t- " + html);
 							// preprocessService.htmlPreprocess(googleResponse, null, null, html); // 전처리 실행
 							preprocessService.htmlPreprocessAi(googleResponse, null, null, html); // AI 사용 전처리 실행
@@ -186,7 +174,6 @@ public class WebCrawlingService {
 					log.info("- " + res.getLink());
 					log.info("\t- " + res.getTitle());
 					log.info("\t- " + res.getSource());
-					// res.getLink(), res.getTitle(), res.getSource()
 					// 해당 링크가 DB에 있는지 체크
 					if (postHtmlService.isUrlExists(res.getLink())) { // DB에 이미 존재하면 skip
 						log.info("[WebCrawlingService] DB에 해당 게시물이 이미 존재합니다 !");
@@ -195,7 +182,6 @@ public class WebCrawlingService {
 						String html = htmlCrawlingService.crawlHtml(res.getLink()); // 크롤링 결과 받아옴
 						if (html != null) {
 							log.info("[WebCrawlingService] HTML 추출 완료");
-							// System.out.println("\t\t- " + html);
 							// log.debug("\t\t- " + html);
 							// preprocessService.htmlPreprocess(res.getLink(), res.getTitle(), res.getSource(), html); // 전처리 실행
 							preprocessService.htmlPreprocessAi(res.getLink(), res.getTitle(), res.getSource(), html);

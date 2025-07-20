@@ -30,30 +30,24 @@ public class HtmlCrawlingService {
 
 	public String crawlHtml(String link) {
 		String api = flaskUrl + "/crawl/html";
-		// ResponseEntity<String> response = restTemplate.postForEntity(api, link, String.class);
 		Map<String, String> requestBody = Map.of("link", link);
 		try {
 			ResponseEntity<String> response = restTemplate.postForEntity(api, requestBody, String.class);
 
 			if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-				System.out.println("\t[HtmlCrawlingService] HTML 크롤링 완료");
-				log.info("\t[HtmlCrawlingService] HTML 크롤링 완료");
+				log.info("[HtmlCrawlingService] HTML 크롤링 완료");
 				JsonNode jsonNode = objectMapper.readTree(response.getBody());
 				String html = jsonNode.asText();
-				// System.out.println("JsonNode TEST");
-				// System.out.println(html);
-				// System.out.println();
-				System.out.println("\t[HtmlCrawlingService] HTML 디코딩 완료");
-				log.info("\t[HtmlCrawlingService] HTML 디코딩 완료");
+				log.info("[HtmlCrawlingService] HTML 디코딩 완료");
 
 				return html; // 크롤링 결과 반환
 			} else {
-				log.warn("\t[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
-				throw new RuntimeException("\t[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
+				log.warn("[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
+				throw new RuntimeException("[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
 			}
 		} catch (Exception e) {
-			log.error("\t[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
-			throw new RuntimeException("\t[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
+			log.error("[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
+			throw new RuntimeException("[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
 		}
 	}
 
@@ -68,7 +62,6 @@ public class HtmlCrawlingService {
 			.updatedAt(now)
 			.build();
 		postHtmlRepository.save(postHtml);
-		System.out.println("\t[HtmlCrawlingService] " + url + " saved"); // test code
-		log.debug("\t[HtmlCrawlingService] " + url + " saved");
+		log.debug("[HtmlCrawlingService] " + url + " saved");
 	}
 }

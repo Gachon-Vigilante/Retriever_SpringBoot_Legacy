@@ -35,19 +35,19 @@ public class HtmlCrawlingService {
 			ResponseEntity<String> response = restTemplate.postForEntity(api, requestBody, String.class);
 
 			if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-				log.info("\t[HtmlCrawlingService] HTML 크롤링 완료");
+				log.info("[HtmlCrawlingService] HTML 크롤링 완료");
 				JsonNode jsonNode = objectMapper.readTree(response.getBody());
 				String html = jsonNode.asText();
-				log.info("\t[HtmlCrawlingService] HTML 디코딩 완료");
+				log.info("[HtmlCrawlingService] HTML 디코딩 완료");
 
 				return html; // 크롤링 결과 반환
 			} else {
-				log.warn("\t[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
-				throw new RuntimeException("\t[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
+				log.warn("[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
+				throw new RuntimeException("[HtmlCrawlingService] HTML is null : " + response.getStatusCode());
 			}
 		} catch (Exception e) {
-			log.error("\t[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
-			throw new RuntimeException("\t[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
+			log.error("[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
+			throw new RuntimeException("[HtmlCrawlingService] HTML 크롤링 중 오류 발생: " + e.getMessage(), e);
 		}
 	}
 
@@ -62,6 +62,6 @@ public class HtmlCrawlingService {
 			.updatedAt(now)
 			.build();
 		postHtmlRepository.save(postHtml);
-		log.debug("\t[HtmlCrawlingService] " + url + " saved");
+		log.debug("[HtmlCrawlingService] " + url + " saved");
 	}
 }

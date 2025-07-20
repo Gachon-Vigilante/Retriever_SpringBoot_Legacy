@@ -5,11 +5,13 @@ import com.team7.retriever.domain.post.domain.document.Posts;
 import com.team7.retriever.neo4j.repository.NeoPostsRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PostSyncService {
@@ -31,19 +33,19 @@ public class PostSyncService {
 					int updated = neoPostRepository.updatePostIdByContentAndLink(content, link, postId);
 
 					if (updated > 0) {
-						System.out.println("✅ 성공: postId=" + postId + " | link=" + link);
+						log.info("✅ 성공: postId=" + postId + " | link=" + link);
 						successCount++;
 					} else {
-						System.out.println("⚠️ 대상 없음 (혹은 이미 있음): postId=" + postId + " | link=" + link);
+						log.info("⚠️ 대상 없음 (혹은 이미 있음): postId=" + postId + " | link=" + link);
 					}
 				} catch (Exception e) {
-					System.out.println("❌ 실패: postId=" + postId + " | link=" + link);
+					log.info("❌ 실패: postId=" + postId + " | link=" + link);
 					e.printStackTrace();
 				}
 			}
 		}
 
-		System.out.println("✅ postId 업데이트 완료: " + successCount + "건");
+		log.info("✅ postId 업데이트 완료: " + successCount + "건");
 	}
 
 }

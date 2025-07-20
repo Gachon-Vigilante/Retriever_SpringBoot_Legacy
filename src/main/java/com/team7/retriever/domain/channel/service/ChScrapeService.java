@@ -33,8 +33,6 @@ public class ChScrapeService {
 		ChannelDataResponse response = restTemplate.postForObject(api, requestBody, ChannelDataResponse.class);
 		String message = Objects.requireNonNull(response).getMessage(); // 응답이 비어있을 수 있음
 		String status = response.getStatus();
-		System.out.println("\t\t\t\t[ChScrapeService] " + message);
-		System.out.println("\t\t\t\t[ChScrapeService] 채널 " + channelKey + " 스크랩 상태: " + status);
 
 		log.info("\t\t\t\t[ChScrapeService] " + message);
 		log.info("\t\t\t\t[ChScrapeService] 채널 " + channelKey + " 스크랩 상태: " + status);

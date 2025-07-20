@@ -30,20 +30,14 @@ public class HtmlCrawlingService {
 
 	public String crawlHtml(String link) {
 		String api = flaskUrl + "/crawl/html";
-		// ResponseEntity<String> response = restTemplate.postForEntity(api, link, String.class);
 		Map<String, String> requestBody = Map.of("link", link);
 		try {
 			ResponseEntity<String> response = restTemplate.postForEntity(api, requestBody, String.class);
 
 			if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-				System.out.println("\t[HtmlCrawlingService] HTML 크롤링 완료");
 				log.info("\t[HtmlCrawlingService] HTML 크롤링 완료");
 				JsonNode jsonNode = objectMapper.readTree(response.getBody());
 				String html = jsonNode.asText();
-				// System.out.println("JsonNode TEST");
-				// System.out.println(html);
-				// System.out.println();
-				System.out.println("\t[HtmlCrawlingService] HTML 디코딩 완료");
 				log.info("\t[HtmlCrawlingService] HTML 디코딩 완료");
 
 				return html; // 크롤링 결과 반환
@@ -68,7 +62,6 @@ public class HtmlCrawlingService {
 			.updatedAt(now)
 			.build();
 		postHtmlRepository.save(postHtml);
-		System.out.println("\t[HtmlCrawlingService] " + url + " saved"); // test code
 		log.debug("\t[HtmlCrawlingService] " + url + " saved");
 	}
 }

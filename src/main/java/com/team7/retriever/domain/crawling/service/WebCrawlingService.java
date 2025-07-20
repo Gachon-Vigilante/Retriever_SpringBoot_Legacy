@@ -138,7 +138,7 @@ public class WebCrawlingService {
 	}
 
 	// SeapAPI Web Link Crawling
-	@Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
+	// @Scheduled(cron = "0 0 5 * * MON-SAT") // 매주 월-토 오전 5시마다 실행
 	public void webCrawlingSerpApi() {
 		String baseApi = flaskUrl + "/crawl/links/serpapi";
 
